@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dicoding.ohmymovies.ui.movies.MoviesViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragmentMoviesRoot"
+        tools:context=".ui.movies.MoviesFragment">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listMovie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{viewModel.moviesShow ? View.VISIBLE : View.INVISIBLE, default=invisible}" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <include
+            android:id="@+id/empty"
+            layout="@layout/empty"
+            android:visibility="@{viewModel.isMoviesEmpty() ? View.VISIBLE : View.GONE, default=gone}" />
+
+        <include
+            android:id="@+id/error"
+            layout="@layout/error"
+            android:visibility="@{viewModel.error ? View.VISIBLE : View.GONE, default=gone}" />
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE, default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

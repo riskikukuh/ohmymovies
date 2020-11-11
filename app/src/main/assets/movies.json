@@ -1,0 +1,1523 @@
+[
+  {
+    "adult": false,
+    "backdrop_path": "/8RKBHHRqOMOLh5qW3sS6TSFTd8h.jpg",
+    "belongs_to_collection": null,
+    "budget": 170000000,
+    "genres": [
+      {
+        "id": 28,
+        "name": "Action"
+      },
+      {
+        "id": 878,
+        "name": "Science Fiction"
+      },
+      {
+        "id": 12,
+        "name": "Adventure"
+      }
+    ],
+    "homepage": "https://www.foxmovies.com/movies/alita-battle-angel",
+    "id": 399579,
+    "imdb_id": "tt0437086",
+    "original_language": "en",
+    "original_title": "Alita: Battle Angel",
+    "overview": "When Alita awakens with no memory of who she is in a future world she does not recognize, she is taken in by Ido, a compassionate doctor who realizes that somewhere in this abandoned cyborg shell is the heart and soul of a young woman with an extraordinary past.",
+    "popularity": 156.841,
+    "poster_path": "@drawable/poster_alita",
+    "production_companies": [
+      {
+        "id": 10807,
+        "logo_path": "/j0BcMaJKIiDDYHq9lriTcM0Npka.png",
+        "name": "Troublemaker Studios",
+        "origin_country": "US"
+      },
+      {
+        "id": 574,
+        "logo_path": "/iB6GjNVHs5hOqcEYt2rcjBqIjki.png",
+        "name": "Lightstorm Entertainment",
+        "origin_country": "US"
+      },
+      {
+        "id": 25,
+        "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+        "name": "20th Century Fox",
+        "origin_country": "US"
+      },
+      {
+        "id": 22213,
+        "logo_path": "/qx9K6bFWJupwde0xQDwOvXkOaL8.png",
+        "name": "TSG Entertainment",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2019-01-31",
+    "revenue": 404852543,
+    "runtime": 122,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      },
+      {
+        "iso_639_1": "es",
+        "name": "Español"
+      }
+    ],
+    "status": "Released",
+    "tagline": "An angel falls. A warrior rises.",
+    "title": "Alita: Battle Angel",
+    "video": false,
+    "vote_average": 7.1,
+    "vote_count": 5789
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/9QusGjxcYvfPD1THg6oW3RLeNn7.jpg",
+    "belongs_to_collection": {
+      "id": 573693,
+      "name": "Aquaman Collection",
+      "poster_path": "/rNQompSTfAG5O2iXSH8Phay4L45.jpg",
+      "backdrop_path": "/5iidzov8DrsSyZdefeo7jBLDNUW.jpg"
+    },
+    "budget": 160000000,
+    "genres": [
+      {
+        "id": 28,
+        "name": "Action"
+      },
+      {
+        "id": 12,
+        "name": "Adventure"
+      },
+      {
+        "id": 14,
+        "name": "Fantasy"
+      }
+    ],
+    "homepage": "http://www.aquamanmovie.com",
+    "id": 297802,
+    "imdb_id": "tt1477834",
+    "original_language": "en",
+    "original_title": "Aquaman",
+    "overview": "Once home to the most advanced civilization on Earth, Atlantis is now an underwater kingdom ruled by the power-hungry King Orm. With a vast army at his disposal, Orm plans to conquer the remaining oceanic people and then the surface world. Standing in his way is Arthur Curry, Orm's half-human, half-Atlantean brother and true heir to the throne.",
+    "popularity": 118.667,
+    "poster_path": "@drawable/poster_aquaman",
+    "production_companies": [
+      {
+        "id": 429,
+        "logo_path": "/2Tc1P3Ac8M479naPp1kYT3izLS5.png",
+        "name": "DC Comics",
+        "origin_country": "US"
+      },
+      {
+        "id": 9993,
+        "logo_path": "/2Tc1P3Ac8M479naPp1kYT3izLS5.png",
+        "name": "DC Entertainment",
+        "origin_country": "US"
+      },
+      {
+        "id": 174,
+        "logo_path": "/IuAlhI9eVC9Z8UQWOIDdWRKSEJ.png",
+        "name": "Warner Bros. Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 11565,
+        "logo_path": null,
+        "name": "The Safran Company",
+        "origin_country": "US"
+      },
+      {
+        "id": 112502,
+        "logo_path": null,
+        "name": "Rodeo FX",
+        "origin_country": ""
+      },
+      {
+        "id": 112611,
+        "logo_path": null,
+        "name": "Panoramic Pictures",
+        "origin_country": "CA"
+      },
+      {
+        "id": 128064,
+        "logo_path": "/13F3Jf7EFAcREU0xzZqJnVnyGXu.png",
+        "name": "DC Films",
+        "origin_country": "US"
+      },
+      {
+        "id": 9995,
+        "logo_path": "/mAIGhOYhN4N2N0F7p4dbKhgXf3l.png",
+        "name": "Cruel & Unusual Films",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "AU",
+        "name": "Australia"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2018-12-07",
+    "revenue": 1148461807,
+    "runtime": 144,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Home Is Calling",
+    "title": "Aquaman",
+    "video": false,
+    "vote_average": 6.9,
+    "vote_count": 9428
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/mnDvPokXpvsdPcWSjNRPhiiLOKu.jpg",
+    "belongs_to_collection": null,
+    "budget": 36000000,
+    "genres": [
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 10749,
+        "name": "Romance"
+      },
+      {
+        "id": 10402,
+        "name": "Music"
+      }
+    ],
+    "homepage": "http://astarisbornmovie.com",
+    "id": 332562,
+    "imdb_id": "tt1517451",
+    "original_language": "en",
+    "original_title": "A Star Is Born",
+    "overview": "Seasoned musician Jackson Maine discovers — and falls in love with — struggling artist Ally. She has just about given up on her dream to make it big as a singer — until Jack coaxes her into the spotlight. But even as Ally's career takes off, the personal side of their relationship is breaking down, as Jack fights an ongoing battle with his own internal demons.",
+    "popularity": 40.929,
+    "poster_path": "@drawable/poster_a_start_is_born",
+    "production_companies": [
+      {
+        "id": 3528,
+        "logo_path": "/cCzCClIzIh81Fa79hpW5nXoUsHK.png",
+        "name": "Thunder Road",
+        "origin_country": "US"
+      },
+      {
+        "id": 83035,
+        "logo_path": null,
+        "name": "22 & Green",
+        "origin_country": "US"
+      },
+      {
+        "id": 975,
+        "logo_path": null,
+        "name": "Gerber Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 83036,
+        "logo_path": null,
+        "name": "Joint Effort",
+        "origin_country": "US"
+      },
+      {
+        "id": 171,
+        "logo_path": null,
+        "name": "Malpaso Productions",
+        "origin_country": "US"
+      },
+      {
+        "id": 174,
+        "logo_path": "/IuAlhI9eVC9Z8UQWOIDdWRKSEJ.png",
+        "name": "Warner Bros. Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 81368,
+        "logo_path": "/srN5L2dTtbsb48VUHvpNG71pT7q.png",
+        "name": "Live Nation Productions",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2018-10-03",
+    "revenue": 433888866,
+    "runtime": 136,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "",
+    "title": "A Star Is Born",
+    "video": false,
+    "vote_average": 7.5,
+    "vote_count": 8609
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/93xA62uLd5CwMOAs37eQ7vPc1iV.jpg",
+    "belongs_to_collection": {
+      "id": 750785,
+      "name": "Bohemian Rhapsody Collection",
+      "poster_path": "/ff4FqoBuetUxZSBrR4hXp7IOc59.jpg",
+      "backdrop_path": "/q2smU8jc0X7Zti48ueexsbdiGXl.jpg"
+    },
+    "budget": 52000000,
+    "genres": [
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 10402,
+        "name": "Music"
+      }
+    ],
+    "homepage": "http://bohemianrhapsody.com",
+    "id": 424694,
+    "imdb_id": "tt1727824",
+    "original_language": "en",
+    "original_title": "Bohemian Rhapsody",
+    "overview": "Singer Freddie Mercury, guitarist Brian May, drummer Roger Taylor and bass guitarist John Deacon take the music world by storm when they form the rock 'n' roll band Queen in 1970. Hit songs become instant classics. When Mercury's increasingly wild lifestyle starts to spiral out of control, Queen soon faces its greatest challenge yet – finding a way to keep the band together amid the success and excess.",
+    "popularity": 63.782,
+    "poster_path": "@drawable/poster_bohemian",
+    "production_companies": [
+      {
+        "id": 3281,
+        "logo_path": "/8tMybAieh64uzvm8knSjXOFX8Qc.png",
+        "name": "GK Films",
+        "origin_country": "GB"
+      },
+      {
+        "id": 508,
+        "logo_path": "/7PzJdsLGlR7oW4J0J5Xcd0pHGRg.png",
+        "name": "Regency Enterprises",
+        "origin_country": "US"
+      },
+      {
+        "id": 90995,
+        "logo_path": null,
+        "name": "Queen Films",
+        "origin_country": "GB"
+      },
+      {
+        "id": 11391,
+        "logo_path": null,
+        "name": "Tribeca Productions",
+        "origin_country": "US"
+      },
+      {
+        "id": 10104,
+        "logo_path": "/hNuGhsKVlmhnwSRcmOejDBDjh6w.png",
+        "name": "New Regency Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 25,
+        "logo_path": "/qZCc1lty5FzX30aOCVRBLzaVmcp.png",
+        "name": "20th Century Fox",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2018-10-24",
+    "revenue": 894027543,
+    "runtime": 135,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Fearless lives forever",
+    "title": "Bohemian Rhapsody",
+    "video": false,
+    "vote_average": 8,
+    "vote_count": 12044
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/aiM3XxYE2JvW1vJ4AC6cI1RjAoT.jpg",
+    "belongs_to_collection": null,
+    "budget": 60000000,
+    "genres": [
+      {
+        "id": 28,
+        "name": "Action"
+      },
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 53,
+        "name": "Thriller"
+      }
+    ],
+    "homepage": "https://coldpursuit.movie",
+    "id": 438650,
+    "imdb_id": "tt5719748",
+    "original_language": "en",
+    "original_title": "Cold Pursuit",
+    "overview": "The quiet family life of Nels Coxman, a snowplow driver, is upended after his son's murder. Nels begins a vengeful hunt for Viking, the drug lord he holds responsible for the killing, eliminating Viking's associates one by one. As Nels draws closer to Viking, his actions bring even more unexpected and violent consequences, as he proves that revenge is all in the execution.",
+    "popularity": 72.565,
+    "poster_path": "@drawable/poster_cold_persuit",
+    "production_companies": [
+      {
+        "id": 694,
+        "logo_path": "/5LEHONGkZBIoWvp1ygHOF8iyi1M.png",
+        "name": "StudioCanal",
+        "origin_country": "FR"
+      },
+      {
+        "id": 5111,
+        "logo_path": "/aE4BQJodjfWGODctvPgfbVD2OKO.png",
+        "name": "Paradox Produksjon",
+        "origin_country": "NO"
+      },
+      {
+        "id": 117591,
+        "logo_path": null,
+        "name": "Mas Films",
+        "origin_country": "FR"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      },
+      {
+        "iso_3166_1": "FR",
+        "name": "France"
+      },
+      {
+        "iso_3166_1": "NO",
+        "name": "Norway"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2019-02-07",
+    "revenue": 59213931,
+    "runtime": 119,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Meet Nels Coxman. Citizen of the Year.",
+    "title": "Cold Pursuit",
+    "video": false,
+    "vote_average": 5.6,
+    "vote_count": 1595
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/kODNw6GJNdgldUMEhKPlCw8wQCr.jpg",
+    "belongs_to_collection": {
+      "id": 553717,
+      "name": "Creed Collection",
+      "poster_path": "/1SqP5GGYDCb0l97BtXZJIZRVy3s.jpg",
+      "backdrop_path": "/pvyoF4jsboXhmU3VLpHL1SyVaNI.jpg"
+    },
+    "budget": 37000000,
+    "genres": [
+      {
+        "id": 18,
+        "name": "Drama"
+      }
+    ],
+    "homepage": "http://creedthemovie.com/",
+    "id": 312221,
+    "imdb_id": "tt3076658",
+    "original_language": "en",
+    "original_title": "Creed",
+    "overview": "The former World Heavyweight Champion Rocky Balboa serves as a trainer and mentor to Adonis Johnson, the son of his late friend and former rival Apollo Creed.",
+    "popularity": 44.624,
+    "poster_path": "@drawable/poster_creed",
+    "production_companies": [
+      {
+        "id": 12,
+        "logo_path": "/iaYpEp3LQmb8AfAtmTvpqd4149c.png",
+        "name": "New Line Cinema",
+        "origin_country": "US"
+      },
+      {
+        "id": 21,
+        "logo_path": "/mjofSXiHpG5t6KYmU4l4FrUhT7m.png",
+        "name": "Metro-Goldwyn-Mayer",
+        "origin_country": "US"
+      },
+      {
+        "id": 174,
+        "logo_path": "/IuAlhI9eVC9Z8UQWOIDdWRKSEJ.png",
+        "name": "Warner Bros. Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 8880,
+        "logo_path": "/fE7LBw7Jz8R29EABFGCvWNriZxN.png",
+        "name": "Winkler Films",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2015-11-25",
+    "revenue": 173567581,
+    "runtime": 133,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Your legacy is more than a name",
+    "title": "Creed",
+    "video": false,
+    "vote_average": 7.4,
+    "vote_count": 5034
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/qrtRKRzoNkf5vemO9tJ2Y4DrHxQ.jpg",
+    "belongs_to_collection": {
+      "id": 435259,
+      "name": "Fantastic Beasts Collection",
+      "poster_path": "/wsVseA7i3FqX24m26Z2gD3EtH4l.jpg",
+      "backdrop_path": "/2Iripuf9j5vbROHNpkUUiWIIDxE.jpg"
+    },
+    "budget": 200000000,
+    "genres": [
+      {
+        "id": 12,
+        "name": "Adventure"
+      },
+      {
+        "id": 14,
+        "name": "Fantasy"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      }
+    ],
+    "homepage": "http://www.fantasticbeasts.com",
+    "id": 338952,
+    "imdb_id": "tt4123430",
+    "original_language": "en",
+    "original_title": "Fantastic Beasts: The Crimes of Grindelwald",
+    "overview": "Gellert Grindelwald has escaped imprisonment and has begun gathering followers to his cause—elevating wizards above all non-magical beings. The only one capable of putting a stop to him is the wizard he once called his closest friend, Albus Dumbledore. However, Dumbledore will need to seek help from the wizard who had thwarted Grindelwald once before, his former student Newt Scamander, who agrees to help, unaware of the dangers that lie ahead. Lines are drawn as love and loyalty are tested, even among the truest friends and family, in an increasingly divided wizarding world.",
+    "popularity": 81.343,
+    "poster_path": "@drawable/poster_crimes",
+    "production_companies": [
+      {
+        "id": 174,
+        "logo_path": "/IuAlhI9eVC9Z8UQWOIDdWRKSEJ.png",
+        "name": "Warner Bros. Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 437,
+        "logo_path": "/nu20mtwbEIhUNnQ5NXVhHsNknZj.png",
+        "name": "Heyday Films",
+        "origin_country": "GB"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2018-11-14",
+    "revenue": 653355901,
+    "runtime": 134,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      },
+      {
+        "iso_639_1": "fr",
+        "name": "Français"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Fate of One. Future of All.",
+    "title": "Fantastic Beasts: The Crimes of Grindelwald",
+    "video": false,
+    "vote_average": 6.9,
+    "vote_count": 7339
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/ngBFDOsx13sFXiMweDoL54XYknR.jpg",
+    "belongs_to_collection": null,
+    "budget": 20000000,
+    "genres": [
+      {
+        "id": 53,
+        "name": "Thriller"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 878,
+        "name": "Science Fiction"
+      }
+    ],
+    "homepage": "https://www.glassmovie.com",
+    "id": 450465,
+    "imdb_id": "tt6823368",
+    "original_language": "en",
+    "original_title": "Glass",
+    "overview": "In a series of escalating encounters, former security guard David Dunn uses his supernatural abilities to track Kevin Wendell Crumb, a disturbed man who has twenty-four personalities. Meanwhile, the shadowy presence of Elijah Price emerges as an orchestrator who holds secrets critical to both men.",
+    "popularity": 90.229,
+    "poster_path": "@drawable/poster_glass",
+    "production_companies": [
+      {
+        "id": 33,
+        "logo_path": "/8lvHyhjr8oUKOOy2dKXoALWKdp0.png",
+        "name": "Universal Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 3172,
+        "logo_path": "/kDedjRZwO8uyFhuHamomOhN6fzG.png",
+        "name": "Blumhouse Productions",
+        "origin_country": "US"
+      },
+      {
+        "id": 12236,
+        "logo_path": "/uV6QBPdn3MjQzAFdgEel6od7geg.png",
+        "name": "Blinding Edge Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 5892,
+        "logo_path": "/fKJpBjX1Q39jChmSQAaSVw5VaB0.png",
+        "name": "Buena Vista International",
+        "origin_country": "US"
+      },
+      {
+        "id": 10338,
+        "logo_path": "/el2ap6lvjcEDdbyJoB3oKiYgXu9.png",
+        "name": "Perfect World Pictures",
+        "origin_country": "CN"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2019-01-16",
+    "revenue": 246941965,
+    "runtime": 129,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      },
+      {
+        "iso_639_1": "es",
+        "name": "Español"
+      }
+    ],
+    "status": "Released",
+    "tagline": "You Cannot Contain What You Are",
+    "title": "Glass",
+    "video": false,
+    "vote_average": 6.6,
+    "vote_count": 5607
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/lFwykSz3Ykj1Q3JXJURnGUTNf1o.jpg",
+    "belongs_to_collection": {
+      "id": 89137,
+      "name": "How to Train Your Dragon Collection",
+      "poster_path": "/hS8y3BcPki0GQKRQeGQVAz6BijK.jpg",
+      "backdrop_path": "/mvcfPkOvgDJG2lEAxTz0NKqoQLo.jpg"
+    },
+    "budget": 129000000,
+    "genres": [
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 10751,
+        "name": "Family"
+      },
+      {
+        "id": 12,
+        "name": "Adventure"
+      }
+    ],
+    "homepage": "https://www.howtotrainyourdragon.com/",
+    "id": 166428,
+    "imdb_id": "tt2386490",
+    "original_language": "en",
+    "original_title": "How to Train Your Dragon: The Hidden World",
+    "overview": "As Hiccup fulfills his dream of creating a peaceful dragon utopia, Toothless’ discovery of an untamed, elusive mate draws the Night Fury away. When danger mounts at home and Hiccup’s reign as village chief is tested, both dragon and rider must make impossible decisions to save their kind.",
+    "popularity": 137.477,
+    "poster_path": "@drawable/poster_how_to_train",
+    "production_companies": [
+      {
+        "id": 521,
+        "logo_path": "/kP7t6RwGz2AvvTkvnI1uteEwHet.png",
+        "name": "DreamWorks Animation",
+        "origin_country": "US"
+      },
+      {
+        "id": 33,
+        "logo_path": "/8lvHyhjr8oUKOOy2dKXoALWKdp0.png",
+        "name": "Universal Pictures",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2019-01-03",
+    "revenue": 517526875,
+    "runtime": 104,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "The friendship of a lifetime",
+    "title": "How to Train Your Dragon: The Hidden World",
+    "video": false,
+    "vote_average": 7.8,
+    "vote_count": 3998
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/lmZFxXgJE3vgrciwuDib0N8CfQo.jpg",
+    "belongs_to_collection": {
+      "id": 86311,
+      "name": "The Avengers Collection",
+      "poster_path": "/tqXiOD5rTyHgabO73Tpw9JDbd88.jpg",
+      "backdrop_path": "/zuW6fOiusv4X9nnW3paHGfXcSll.jpg"
+    },
+    "budget": 300000000,
+    "genres": [
+      {
+        "id": 12,
+        "name": "Adventure"
+      },
+      {
+        "id": 28,
+        "name": "Action"
+      },
+      {
+        "id": 878,
+        "name": "Science Fiction"
+      }
+    ],
+    "homepage": "https://www.marvel.com/movies/avengers-infinity-war",
+    "id": 299536,
+    "imdb_id": "tt4154756",
+    "original_language": "en",
+    "original_title": "Avengers: Infinity War",
+    "overview": "As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.",
+    "popularity": 272.873,
+    "poster_path": "@drawable/poster_infinity_war",
+    "production_companies": [
+      {
+        "id": 420,
+        "logo_path": "/hUzeosd33nzE5MCNsZxCGEKTXaQ.png",
+        "name": "Marvel Studios",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2018-04-25",
+    "revenue": 2046239637,
+    "runtime": 149,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      },
+      {
+        "iso_639_1": "xh",
+        "name": ""
+      }
+    ],
+    "status": "Released",
+    "tagline": "An entire universe. Once and for all.",
+    "title": "Avengers: Infinity War",
+    "video": false,
+    "vote_average": 8.3,
+    "vote_count": 19923
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/iv5N169nQIzrS0pZ8MBEiemTtVt.jpg",
+    "belongs_to_collection": null,
+    "budget": 25000000,
+    "genres": [
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 36,
+        "name": "History"
+      }
+    ],
+    "homepage": "http://www.focusfeatures.com/mary-queen-of-scots/",
+    "id": 457136,
+    "imdb_id": "tt2328900",
+    "original_language": "en",
+    "original_title": "Mary Queen of Scots",
+    "overview": "In 1561, Mary Stuart, widow of the King of France, returns to Scotland, reclaims her rightful throne and menaces the future of Queen Elizabeth I as ruler of England, because she has a legitimate claim to the English throne. Betrayals, rebellions, conspiracies and their own life choices imperil both Queens. They experience the bitter cost of power, until their tragic fate is finally fulfilled.",
+    "popularity": 13.533,
+    "poster_path": "@drawable/poster_marry_queen",
+    "production_companies": [
+      {
+        "id": 10146,
+        "logo_path": "/xnFIOeq5cKw09kCWqV7foWDe4AA.png",
+        "name": "Focus Features",
+        "origin_country": "US"
+      },
+      {
+        "id": 10163,
+        "logo_path": "/16KWBMmfPX0aJzDExDrPxSLj0Pg.png",
+        "name": "Working Title Films",
+        "origin_country": "GB"
+      },
+      {
+        "id": 10338,
+        "logo_path": "/el2ap6lvjcEDdbyJoB3oKiYgXu9.png",
+        "name": "Perfect World Pictures",
+        "origin_country": "CN"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      },
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ],
+    "release_date": "2018-12-07",
+    "revenue": 37807625,
+    "runtime": 124,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      },
+      {
+        "iso_639_1": "fr",
+        "name": "Français"
+      },
+      {
+        "iso_639_1": "gd",
+        "name": ""
+      },
+      {
+        "iso_639_1": "la",
+        "name": "Latin"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Bow to No One",
+    "title": "Mary Queen of Scots",
+    "video": false,
+    "vote_average": 6.6,
+    "vote_count": 1177
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/grtVFGJ4ts0nDAPpc1JWbBoVKTu.jpg",
+    "belongs_to_collection": null,
+    "budget": 0,
+    "genres": [
+      {
+        "id": 28,
+        "name": "Action"
+      }
+    ],
+    "homepage": "",
+    "id": 450001,
+    "imdb_id": "tt7262882",
+    "original_language": "cn",
+    "original_title": "葉問外傳：張天志",
+    "overview": "Following his defeat by Master Ip, Cheung Tin Chi tries to make a life with his young son in Hong Kong, waiting tables at a bar that caters to expats. But it's not long before the mix of foreigners, money, and triad leaders draw him once again to the fight.",
+    "popularity": 36.344,
+    "poster_path": "@drawable/poster_master_z",
+    "production_companies": [
+      {
+        "id": 6950,
+        "logo_path": null,
+        "name": "Pegasus Motion Pictures",
+        "origin_country": ""
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "HK",
+        "name": "Hong Kong"
+      },
+      {
+        "iso_3166_1": "CN",
+        "name": "China"
+      }
+    ],
+    "release_date": "2018-12-20",
+    "revenue": 21832649,
+    "runtime": 107,
+    "spoken_languages": [
+      {
+        "iso_639_1": "cn",
+        "name": "广州话 / 廣州話"
+      },
+      {
+        "iso_639_1": "zh",
+        "name": "普通话"
+      },
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "",
+    "title": "Master Z: Ip Man Legacy",
+    "video": false,
+    "vote_average": 5.6,
+    "vote_count": 254
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/rm2oMykm5nX6SzXFr7TGHkO6r8Z.jpg",
+    "belongs_to_collection": null,
+    "budget": 100000000,
+    "genres": [
+      {
+        "id": 12,
+        "name": "Adventure"
+      },
+      {
+        "id": 14,
+        "name": "Fantasy"
+      }
+    ],
+    "homepage": "http://www.mortalengines.com",
+    "id": 428078,
+    "imdb_id": "tt1571234",
+    "original_language": "en",
+    "original_title": "Mortal Engines",
+    "overview": "Many thousands of years in the future, Earth’s cities roam the globe on huge wheels, devouring each other in a struggle for ever diminishing resources. On one of these massive traction cities, the old London, Tom Natsworthy has an unexpected encounter with a mysterious young woman from the wastelands who will change the course of his life forever.",
+    "popularity": 90.756,
+    "poster_path": "@drawable/poster_mortal_engines",
+    "production_companies": [
+      {
+        "id": 1938,
+        "logo_path": null,
+        "name": "Scholastic Productions",
+        "origin_country": "US"
+      },
+      {
+        "id": 105645,
+        "logo_path": null,
+        "name": "Silvertongue Films",
+        "origin_country": "US"
+      },
+      {
+        "id": 33,
+        "logo_path": "/8lvHyhjr8oUKOOy2dKXoALWKdp0.png",
+        "name": "Universal Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 11,
+        "logo_path": "/6FAuASQHybRkZUk08p9PzSs9ezM.png",
+        "name": "WingNut Films",
+        "origin_country": "NZ"
+      },
+      {
+        "id": 2531,
+        "logo_path": "/pC2iDCDCvV85vOBP7a5Ukxuc0Du.png",
+        "name": "MRC",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "NZ",
+        "name": "New Zealand"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2018-11-27",
+    "revenue": 83672673,
+    "runtime": 129,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Some scars never heal",
+    "title": "Mortal Engines",
+    "video": false,
+    "vote_average": 6.1,
+    "vote_count": 3000
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/sHNC8hjAu4ZKXYhG3cp8ghRZ02B.jpg",
+    "belongs_to_collection": null,
+    "budget": 38000000,
+    "genres": [
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 10752,
+        "name": "War"
+      },
+      {
+        "id": 878,
+        "name": "Science Fiction"
+      }
+    ],
+    "homepage": "http://www.overlordmovie.com",
+    "id": 438799,
+    "imdb_id": "tt4530422",
+    "original_language": "en",
+    "original_title": "Overlord",
+    "overview": "France, June 1944. On the eve of D-Day, some American paratroopers fall behind enemy lines after their aircraft crashes while on a mission to destroy a radio tower in a small village near the beaches of Normandy. After reaching their target, the surviving paratroopers realise that, in addition to fighting the Nazi troops that patrol the village, they also must fight against something else.",
+    "popularity": 53.938,
+    "poster_path": "@drawable/poster_overlord",
+    "production_companies": [
+      {
+        "id": 11461,
+        "logo_path": "/p9FoEt5shEKRWRKVIlvFaEmRnun.png",
+        "name": "Bad Robot",
+        "origin_country": "US"
+      },
+      {
+        "id": 4,
+        "logo_path": "/fycMZt242LVjagMByZOLUGbCvv3.png",
+        "name": "Paramount",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "CA",
+        "name": "Canada"
+      },
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2018-11-01",
+    "revenue": 41657844,
+    "runtime": 110,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      },
+      {
+        "iso_639_1": "fr",
+        "name": "Français"
+      },
+      {
+        "iso_639_1": "de",
+        "name": "Deutsch"
+      },
+      {
+        "iso_639_1": "ru",
+        "name": "Pусский"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Stop the unstoppable",
+    "title": "Overlord",
+    "video": false,
+    "vote_average": 6.7,
+    "vote_count": 1830
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/88poTBTafMXaz73vYi3c74g0y2k.jpg",
+    "belongs_to_collection": {
+      "id": 404825,
+      "name": "Wreck-It Ralph Collection",
+      "poster_path": "/vdeiGjx59XkMAUVERuvg1rmWcEI.jpg",
+      "backdrop_path": "/sF1HyYprIWes0nHuUTBwy6Degom.jpg"
+    },
+    "budget": 175000000,
+    "genres": [
+      {
+        "id": 10751,
+        "name": "Family"
+      },
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 12,
+        "name": "Adventure"
+      }
+    ],
+    "homepage": "https://movies.disney.com/ralph-breaks-the-internet-wreck-it-ralph-2",
+    "id": 404368,
+    "imdb_id": "tt5848272",
+    "original_language": "en",
+    "original_title": "Ralph Breaks the Internet",
+    "overview": "Video game bad guy Ralph and fellow misfit Vanellope von Schweetz must risk it all by traveling to the World Wide Web in search of a replacement part to save Vanellope's video game, Sugar Rush. In way over their heads, Ralph and Vanellope rely on the citizens of the internet — the netizens — to help navigate their way, including an entrepreneur named Yesss, who is the head algorithm and the heart and soul of trend-making site BuzzzTube.",
+    "popularity": 176.404,
+    "poster_path": "@drawable/poster_ralph",
+    "production_companies": [
+      {
+        "id": 2,
+        "logo_path": "/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
+        "name": "Walt Disney Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 6125,
+        "logo_path": "/tVPmo07IHhBs4HuilrcV0yujsZ9.png",
+        "name": "Walt Disney Animation Studios",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2018-11-20",
+    "revenue": 529221154,
+    "runtime": 112,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Who broke the internet?",
+    "title": "Ralph Breaks the Internet",
+    "video": false,
+    "vote_average": 7.2,
+    "vote_count": 4986
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/zSJT1sKGRKcmP4I9b8dIOuepw6I.jpg",
+    "belongs_to_collection": null,
+    "budget": 100000000,
+    "genres": [
+      {
+        "id": 12,
+        "name": "Adventure"
+      },
+      {
+        "id": 28,
+        "name": "Action"
+      },
+      {
+        "id": 53,
+        "name": "Thriller"
+      }
+    ],
+    "homepage": "https://www.robinhood.movie",
+    "id": 375588,
+    "imdb_id": "tt4532826",
+    "original_language": "en",
+    "original_title": "Robin Hood",
+    "overview": "A war-hardened Crusader and his Moorish commander mount an audacious revolt against the corrupt English crown.",
+    "popularity": 54.251,
+    "poster_path": "@drawable/poster_robin_hood",
+    "production_companies": [
+      {
+        "id": 562,
+        "logo_path": "/k3NsSdV854UX4zEReX1dl1Psxbb.png",
+        "name": "Appian Way",
+        "origin_country": "US"
+      },
+      {
+        "id": 25577,
+        "logo_path": null,
+        "name": "Safehouse Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 491,
+        "logo_path": "/rUp0lLKa1pr4UsPm8fgzmnNGxtq.png",
+        "name": "Summit Entertainment",
+        "origin_country": "US"
+      },
+      {
+        "id": 3528,
+        "logo_path": "/cCzCClIzIh81Fa79hpW5nXoUsHK.png",
+        "name": "Thunder Road",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2018-11-21",
+    "revenue": 86493046,
+    "runtime": 116,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Released",
+    "tagline": "The legend you know. The story you don't.",
+    "title": "Robin Hood",
+    "video": false,
+    "vote_average": 5.9,
+    "vote_count": 2042
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/ridcUDnFumpMB5AAsIvFafTSx5i.jpg",
+    "belongs_to_collection": null,
+    "budget": 25000000,
+    "genres": [
+      {
+        "id": 53,
+        "name": "Thriller"
+      },
+      {
+        "id": 9648,
+        "name": "Mystery"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      }
+    ],
+    "homepage": "",
+    "id": 452832,
+    "imdb_id": "tt6476140",
+    "original_language": "en",
+    "original_title": "Serenity",
+    "overview": "The quiet life of Baker Dill, a fishing boat captain who lives on the isolated Plymouth Island, where he spends his days obsessed with capturing an elusive tuna while fighting his personal demons, is interrupted when someone from his past comes to him searching for help.",
+    "popularity": 18.007,
+    "poster_path": "@drawable/poster_serenity",
+    "production_companies": [
+      {
+        "id": 125282,
+        "logo_path": null,
+        "name": "Nebulastar",
+        "origin_country": "GB"
+      },
+      {
+        "id": 28473,
+        "logo_path": null,
+        "name": "Shoebox Films",
+        "origin_country": "GB"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "GB",
+        "name": "United Kingdom"
+      }
+    ],
+    "release_date": "2019-01-24",
+    "revenue": 14454622,
+    "runtime": 102,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      },
+      {
+        "iso_639_1": "fr",
+        "name": "Français"
+      }
+    ],
+    "status": "Released",
+    "tagline": "On Plymouth Island, no one ever dies… unless you break the rules",
+    "title": "Serenity",
+    "video": false,
+    "vote_average": 5.4,
+    "vote_count": 1024
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/7d6EY00g1c39SGZOoCJ5Py9nNth.jpg",
+    "belongs_to_collection": {
+      "id": 573436,
+      "name": "Spider-Man: Spider-Verse Collection",
+      "poster_path": "/eD4bGQNfmqExIAzKdvX5gDHhI2.jpg",
+      "backdrop_path": "/14F6gMaRjzgsN6EEpiwH87R1I00.jpg"
+    },
+    "budget": 90000000,
+    "genres": [
+      {
+        "id": 28,
+        "name": "Action"
+      },
+      {
+        "id": 12,
+        "name": "Adventure"
+      },
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 878,
+        "name": "Science Fiction"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      }
+    ],
+    "homepage": "http://www.intothespiderverse.movie",
+    "id": 324857,
+    "imdb_id": "tt4633694",
+    "original_language": "en",
+    "original_title": "Spider-Man: Into the Spider-Verse",
+    "overview": "Miles Morales is juggling his life between being a high school student and being a spider-man. When Wilson \"Kingpin\" Fisk uses a super collider, others from across the Spider-Verse are transported to this dimension.",
+    "popularity": 168.025,
+    "poster_path": "@drawable/poster_spiderman",
+    "production_companies": [
+      {
+        "id": 5,
+        "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+        "name": "Columbia Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 2251,
+        "logo_path": "/6l16UFSkZ1oPpyBYaILgffFZlTc.png",
+        "name": "Sony Pictures Animation",
+        "origin_country": "US"
+      },
+      {
+        "id": 7505,
+        "logo_path": "/837VMM4wOkODc1idNxGT0KQJlej.png",
+        "name": "Marvel Entertainment",
+        "origin_country": "US"
+      },
+      {
+        "id": 14439,
+        "logo_path": null,
+        "name": "Arad Productions",
+        "origin_country": "US"
+      },
+      {
+        "id": 77973,
+        "logo_path": null,
+        "name": "Lord Miller",
+        "origin_country": "US"
+      },
+      {
+        "id": 84041,
+        "logo_path": "/XmHMPGzdI5c4WGX1YlxU4s2v7T.png",
+        "name": "Pascal Pictures",
+        "origin_country": "US"
+      },
+      {
+        "id": 34,
+        "logo_path": "/GagSvqWlyPdkFHMfQ3pNq6ix9P.png",
+        "name": "Sony Pictures",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "release_date": "2018-12-06",
+    "revenue": 375540831,
+    "runtime": 117,
+    "spoken_languages": [
+      {
+        "iso_639_1": "en",
+        "name": "English"
+      },
+      {
+        "iso_639_1": "es",
+        "name": "Español"
+      }
+    ],
+    "status": "Released",
+    "tagline": "More Than One Wears the Mask",
+    "title": "Spider-Man: Into the Spider-Verse",
+    "video": false,
+    "vote_average": 8.4,
+    "vote_count": 8115
+  },
+  {
+    "adult": false,
+    "backdrop_path": "/3QVSM3DYxvov57j25vxDNJGHUpQ.jpg",
+    "belongs_to_collection": null,
+    "budget": 8000000,
+    "genres": [
+      {
+        "id": 10752,
+        "name": "War"
+      },
+      {
+        "id": 28,
+        "name": "Action"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 36,
+        "name": "History"
+      }
+    ],
+    "homepage": "",
+    "id": 505954,
+    "imdb_id": "tt8820590",
+    "original_language": "ru",
+    "original_title": "T-34",
+    "overview": "In 1944, a courageous group of Russian soldiers managed to escape from German captivity in a half-destroyed legendary T-34 tank. Those were the times of unforgettable bravery, fierce fighting, unbreakable love, and legendary miracles.",
+    "popularity": 33.069,
+    "poster_path": "@drawable/poster_t34",
+    "production_companies": [
+      {
+        "id": 104482,
+        "logo_path": "/17CSuJBYVYlzzTZCLSXgM5edOkx.png",
+        "name": "AMedia",
+        "origin_country": "RU"
+      },
+      {
+        "id": 54307,
+        "logo_path": "/c6zhUONn8UMP6vdDHXrxpGxuzh2.png",
+        "name": "Mars Media Entertainment",
+        "origin_country": "RU"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "RU",
+        "name": "Russia"
+      }
+    ],
+    "release_date": "2018-12-27",
+    "revenue": 36220872,
+    "runtime": 139,
+    "spoken_languages": [
+      {
+        "iso_639_1": "de",
+        "name": "Deutsch"
+      },
+      {
+        "iso_639_1": "ru",
+        "name": "Pусский"
+      }
+    ],
+    "status": "Released",
+    "tagline": "Fast And Furious On Tanks",
+    "title": "T-34",
+    "video": false,
+    "vote_average": 6.7,
+    "vote_count": 452
+  }
+]

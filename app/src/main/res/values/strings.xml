@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">OhMyMovies</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="unknown">Unknown</string>
+
+    <string-array name="tabName">
+        <item>MOVIES</item>
+        <item>TV SHOWS</item>
+    </string-array>
+
+    <!--  Movies  -->
+    <string name="movies_empty">Movies empty</string>
+    <string name="movie_id_not_found">Movie id not found</string>
+
+    <!--  Tvshows  -->
+    <string name="tvshows_empty">Tvshows empty</string>
+    <string name="tvshow_id_not_found">Tvshow id not found</string>
+    <string name="content_description_logo_ohmymovies">Logo OhMyMovies</string>
+</resources>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.dicoding.ohmymovies.ui.tvshows.TvshowsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragmentTvshowsRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listTvshows"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{viewModel.tvshowsShow ? View.VISIBLE : View.INVISIBLE, default=invisible}" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <include
+            android:id="@+id/empty"
+            layout="@layout/empty"
+            android:visibility="@{viewModel.isTvshowsEmpty() ? View.VISIBLE : View.GONE, default=gone}" />
+
+        <include
+            android:id="@+id/error"
+            layout="@layout/error"
+            android:visibility="@{viewModel.error ? View.VISIBLE : View.GONE, default=gone}" />
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE, default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
