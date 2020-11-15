@@ -6,28 +6,20 @@ import androidx.core.view.size
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.platform.app.InstrumentationRegistry
 import com.dicoding.ohmymovies.R
-import com.dicoding.ohmymovies.data.model.DetailMovieActivityArgs
 import com.dicoding.ohmymovies.data.model.DetailTvshowActivityArgs
 import com.dicoding.ohmymovies.ui.adapter.GenresAdapter
-import com.dicoding.ohmymovies.ui.detailMovie.DetailMovieActivity
-import com.dicoding.ohmymovies.util.EspressoExt
 import com.dicoding.ohmymovies.util.EspressoExt.matchToolbarTitle
 import com.dicoding.ohmymovies.util.EspressoExt.withDrawable
 import com.dicoding.ohmymovies.util.EspressoIdlingResource
-import com.dicoding.ohmymovies.util.FakeData
 import com.dicoding.ohmymovies.util.FakeData.TV_SHOW
 import kotlinx.android.synthetic.main.activity_detail_movie.*
-import org.hamcrest.core.IsNot
 import org.hamcrest.core.IsNot.not
 import org.junit.After
 import org.junit.Before
@@ -49,8 +41,11 @@ class DetailTvshowActivityTest {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
     }
 
+    /**
+     * Menampilkan data tv show saat diberikan data yang tidak null
+     */
     @Test
-    fun test_argsMovieIsThere() {
+    fun test_argsTvshowIsThere() {
         val intent = Intent(
             ApplicationProvider.getApplicationContext(),
             DetailTvshowActivity::class.java
@@ -82,8 +77,11 @@ class DetailTvshowActivityTest {
             .check(matches(withText(TV_SHOW.episodeCountAsString())))
     }
 
+    /**
+     * Menampilkan error saat diberikan data null
+     */
     @Test
-    fun test_argsMovieErrorOrNull() {
+    fun test_argsTvshowErrorOrNull() {
         val intent = Intent(
             ApplicationProvider.getApplicationContext(),
             DetailTvshowActivity::class.java

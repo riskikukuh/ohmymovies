@@ -1,21 +1,20 @@
 package com.dicoding.ohmymovies.ui.detailMovie
 
 import android.app.Application
-import androidx.lifecycle.*
-import com.dicoding.ohmymovies.data.Result
-import com.dicoding.ohmymovies.data.model.MovieModel
-import com.dicoding.ohmymovies.data.model.TvShowModel
-import com.dicoding.ohmymovies.data.source.MovieRepository
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.data.model.DetailMovieActivityArgs
-import com.dicoding.ohmymovies.util.EspressoIdlingResource
+import com.dicoding.ohmymovies.data.model.MovieModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 class DetailMovieViewModel(
     application: Application,
-    private val movieRepository: MovieRepository,
-    private val dispatcher : CoroutineContext = Dispatchers.IO
+    private val dispatcher: CoroutineContext = Dispatchers.IO
 ) : AndroidViewModel(application){
 
     private val _argsMovie = MutableLiveData<MovieModel>()

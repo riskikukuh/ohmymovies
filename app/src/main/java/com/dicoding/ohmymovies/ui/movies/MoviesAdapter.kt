@@ -24,11 +24,11 @@ class MoviesAdapter(private val diffCallback: DiffCallback = DiffCallback(), pri
 
     override fun getItemCount(): Int = movies.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
-    override fun onBindViewHolder(holder: MoviesAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(movies[position], onClickCallback)
     }
 

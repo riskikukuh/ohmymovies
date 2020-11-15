@@ -45,7 +45,7 @@ class DetailTvshowViewModelTest {
     @Before
     fun setUp() {
         viewModel =
-            DetailTvshowViewModel(application, repository, mainCoroutineRule.coroutineContext)
+            DetailTvshowViewModel(application, mainCoroutineRule.coroutineContext)
     }
 
     @Test

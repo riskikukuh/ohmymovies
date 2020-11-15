@@ -5,15 +5,12 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.data.model.DetailMovieActivityArgs
 import com.dicoding.ohmymovies.data.model.MovieModel
-import com.dicoding.ohmymovies.data.model.TvShowModel
 import com.dicoding.ohmymovies.data.source.MovieRepository
-import com.dicoding.ohmymovies.ui.tvshows.TvshowsViewModel
 import com.dicoding.ohmymovies.util.LiveDataTestUtil
 import com.dicoding.ohmymovies.util.MainCoroutineRule
 import com.dicoding.ohmymovies.util.Util
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -50,7 +47,7 @@ class DetailMovieViewModelTest {
     @Before
     fun setUp() {
         viewModel =
-            DetailMovieViewModel(application, repository, mainCoroutineRule.coroutineContext)
+            DetailMovieViewModel(application, mainCoroutineRule.coroutineContext)
     }
 
     @Test

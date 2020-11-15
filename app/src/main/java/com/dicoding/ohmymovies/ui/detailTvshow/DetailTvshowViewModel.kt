@@ -3,7 +3,6 @@ package com.dicoding.ohmymovies.ui.detailTvshow
 import android.app.Application
 import androidx.lifecycle.*
 import com.dicoding.ohmymovies.data.model.TvShowModel
-import com.dicoding.ohmymovies.data.source.MovieRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
@@ -12,8 +11,7 @@ import com.dicoding.ohmymovies.data.model.DetailTvshowActivityArgs
 
 class DetailTvshowViewModel(
     application: Application,
-    private val movieRepository: MovieRepository,
-    private val dispatcher : CoroutineContext = Dispatchers.IO
+    private val dispatcher: CoroutineContext = Dispatchers.IO
 ) : AndroidViewModel(application){
 
     private val _argsTvshow = MutableLiveData<TvShowModel>()

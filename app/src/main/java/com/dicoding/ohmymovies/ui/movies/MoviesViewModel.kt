@@ -1,24 +1,17 @@
 package com.dicoding.ohmymovies.ui.movies
 
 import android.app.Application
-import android.content.Context
-import android.util.Log
-import android.view.View
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.*
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.data.Event
+import com.dicoding.ohmymovies.data.Result.Error
+import com.dicoding.ohmymovies.data.Result.Success
 import com.dicoding.ohmymovies.data.model.MovieModel
-import com.dicoding.ohmymovies.data.Result.*
 import com.dicoding.ohmymovies.data.source.MovieRepository
-import com.dicoding.ohmymovies.databinding.EmptyBinding
-import com.dicoding.ohmymovies.databinding.FragmentMoviesBinding
+import com.dicoding.ohmymovies.util.EspressoIdlingResource
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
-import com.dicoding.ohmymovies.R
-import com.dicoding.ohmymovies.util.EspressoIdlingResource
 
 open class MoviesViewModel(
     application: Application,

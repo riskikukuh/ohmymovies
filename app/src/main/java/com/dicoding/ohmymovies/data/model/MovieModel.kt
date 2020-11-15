@@ -1,10 +1,7 @@
 package com.dicoding.ohmymovies.data.model
 
 import android.os.Parcelable
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.IgnoredOnParcel
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

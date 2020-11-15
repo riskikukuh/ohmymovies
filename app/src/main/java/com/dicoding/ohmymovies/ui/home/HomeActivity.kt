@@ -1,14 +1,11 @@
 package com.dicoding.ohmymovies.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.annotation.VisibleForTesting
+import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.databinding.ActivityHomeBinding
 import com.dicoding.ohmymovies.ui.movies.MoviesFragment
 import com.dicoding.ohmymovies.ui.tvshows.TvshowsFragment
-import com.dicoding.ohmymovies.util.MyFragmentFactory
-import com.dicoding.ohmymovies.util.getViewModelFactory
 import com.dicoding.ohmymovies.util.setupToolbar
 import com.google.android.material.tabs.TabLayoutMediator
 

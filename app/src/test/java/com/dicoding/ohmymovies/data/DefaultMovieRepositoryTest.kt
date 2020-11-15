@@ -1,27 +1,24 @@
 package com.dicoding.ohmymovies.data
 
-import android.app.Application
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.dicoding.ohmymovies.data.source.MovieRepository
-import com.google.common.truth.Truth.*
-import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Before
-import com.dicoding.ohmymovies.data.Result.Success
 import com.dicoding.ohmymovies.data.Result.Error
+import com.dicoding.ohmymovies.data.Result.Success
 import com.dicoding.ohmymovies.data.model.MovieModel
-import com.dicoding.ohmymovies.ui.movies.MoviesViewModel
-import com.dicoding.ohmymovies.util.LiveDataTestUtil
-import com.dicoding.ohmymovies.util.MainCoroutineRule
+import com.dicoding.ohmymovies.data.source.MovieRepository
 import com.dicoding.ohmymovies.util.Util.exception
 import com.dicoding.ohmymovies.util.Util.fakeMovie
 import com.dicoding.ohmymovies.util.Util.fakeTvShow
+import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runBlockingTest
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.*
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.mock
 import org.mockito.runners.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi

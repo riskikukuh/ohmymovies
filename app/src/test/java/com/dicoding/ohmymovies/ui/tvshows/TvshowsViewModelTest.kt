@@ -4,10 +4,8 @@ import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.data.Result
-import com.dicoding.ohmymovies.data.model.MovieModel
 import com.dicoding.ohmymovies.data.model.TvShowModel
 import com.dicoding.ohmymovies.data.source.MovieRepository
-import com.dicoding.ohmymovies.ui.movies.MoviesViewModel
 import com.dicoding.ohmymovies.util.LiveDataTestUtil
 import com.dicoding.ohmymovies.util.MainCoroutineRule
 import com.dicoding.ohmymovies.util.Util
@@ -48,7 +46,7 @@ class TvshowsViewModelTest {
 
     @Test
     fun `fetchTvshows from swipe false tvshows is empty success test`() = runBlockingTest {
-        Mockito.`when`(repository.getTvShows(false, application))
+        `when`(repository.getTvShows(false, application))
             .thenReturn(Result.Success(emptyList()))
         `when`(application.getString(R.string.tvshows_empty)).thenReturn("Tvshows Empty")
 
@@ -102,7 +100,7 @@ class TvshowsViewModelTest {
 
     @Test
     fun `fetchTvshows from swipe false movies is not empty success test`() = runBlockingTest {
-        Mockito.`when`(repository.getTvShows(false, application))
+        `when`(repository.getTvShows(false, application))
             .thenReturn(Result.Success(fakeTvshows))
 
         mainCoroutineRule.pauseDispatcher()
@@ -126,7 +124,7 @@ class TvshowsViewModelTest {
 
     @Test
     fun `fetchTvshows from swipe true movies is not empty success test`() = runBlockingTest {
-        Mockito.`when`(repository.getTvShows(false, application))
+        `when`(repository.getTvShows(false, application))
             .thenReturn(Result.Success(fakeTvshows))
 
         mainCoroutineRule.pauseDispatcher()
@@ -173,7 +171,7 @@ class TvshowsViewModelTest {
 
     @Test
     fun `fetchTvshows from swipe true error test`() = runBlockingTest {
-        Mockito.`when`(repository.getTvShows(false, application))
+        `when`(repository.getTvShows(false, application))
             .thenReturn(Result.Error(Util.exception))
 
         mainCoroutineRule.pauseDispatcher()

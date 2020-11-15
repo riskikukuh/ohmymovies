@@ -24,10 +24,10 @@ class ViewModelFactory(
                     TvshowsViewModel(application, movieRepository)
                 }
                 isAssignableFrom(DetailMovieViewModel::class.java) -> {
-                    DetailMovieViewModel(application, movieRepository)
+                    DetailMovieViewModel(application)
                 }
                 isAssignableFrom(DetailTvshowViewModel::class.java) -> {
-                    DetailTvshowViewModel(application, movieRepository)
+                    DetailTvshowViewModel(application)
                 }
                 else -> {
                     throw IllegalArgumentException("Unknown Viewmodel class")

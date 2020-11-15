@@ -1,8 +1,6 @@
 package com.dicoding.ohmymovies.ui.detailMovie
 
-import android.content.Context
 import android.content.Intent
-import android.util.Log
 import androidx.core.view.size
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
@@ -11,27 +9,20 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.rules.ActivityScenarioRule
-import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.data.model.DetailMovieActivityArgs
 import com.dicoding.ohmymovies.ui.adapter.GenresAdapter
-import com.dicoding.ohmymovies.ui.home.HomeActivity
-import com.dicoding.ohmymovies.util.EspressoExt
 import com.dicoding.ohmymovies.util.EspressoExt.matchToolbarTitle
 import com.dicoding.ohmymovies.util.EspressoExt.withDrawable
 import com.dicoding.ohmymovies.util.EspressoIdlingResource
-import com.dicoding.ohmymovies.util.FakeData
 import com.dicoding.ohmymovies.util.FakeData.MOVIE
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 import org.hamcrest.core.IsNot.not
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -50,10 +41,13 @@ class DetailMovieActivityTest {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
     }
 
+    /**
+     * Menampilkan data movie saat diberikan data yang tidak null
+     */
     @Test
     fun test_argsMovieIsThere() {
         val intent = Intent(ApplicationProvider.getApplicationContext(), DetailMovieActivity::class.java).apply {
-            putExtra(DetailMovieActivity.ARGS, DetailMovieActivityArgs(FakeData.MOVIE.title, FakeData.MOVIE))
+            putExtra(DetailMovieActivity.ARGS, DetailMovieActivityArgs(MOVIE.title, MOVIE))
         }
         ActivityScenario.launch<DetailMovieActivity>(intent).onActivity {
             listGenre = it.genres
@@ -70,6 +64,9 @@ class DetailMovieActivityTest {
         onView(withId(R.id.releaseDate)).check(matches(withText(MOVIE.releaseDate)))
     }
 
+    /**
+     * Menampilkan error saat diberikan data null
+     */
     @Test
     fun test_argsMovieNull(){
         val intent = Intent(ApplicationProvider.getApplicationContext(), DetailMovieActivity::class.java).apply{

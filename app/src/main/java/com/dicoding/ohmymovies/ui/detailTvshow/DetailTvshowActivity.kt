@@ -39,7 +39,7 @@ class DetailTvshowActivity : AppCompatActivity() {
     private fun setupObserver() {
         with(detailTvshowViewModel) {
             tvshow.observe(this@DetailTvshowActivity) {
-                binding.posterTvshow.setImageResource(it.posterImageResource ?: 0)
+                binding.posterTvshow.setImageResource(it.posterImageResource)
                 if (it.genres != null && it.genres.isNotEmpty()) genresAdapter.addGenres(it.genres)
             }
 

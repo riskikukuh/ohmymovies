@@ -1,21 +1,13 @@
 package com.dicoding.ohmymovies.util
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewAssertion
-import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.BoundedMatcher
-import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.startsWith

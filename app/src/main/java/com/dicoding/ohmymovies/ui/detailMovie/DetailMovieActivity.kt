@@ -1,9 +1,8 @@
 package com.dicoding.ohmymovies.ui.detailMovie
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ohmymovies.data.model.DetailMovieActivityArgs
 import com.dicoding.ohmymovies.databinding.ActivityDetailMovieBinding

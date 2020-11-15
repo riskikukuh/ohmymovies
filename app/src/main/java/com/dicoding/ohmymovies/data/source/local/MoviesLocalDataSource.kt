@@ -1,9 +1,8 @@
 package com.dicoding.ohmymovies.data.source.local
 
 import android.content.Context
-import android.util.Log
-import com.dicoding.ohmymovies.data.model.MovieModel
 import com.dicoding.ohmymovies.data.Result
+import com.dicoding.ohmymovies.data.model.MovieModel
 import com.dicoding.ohmymovies.data.model.TvShowModel
 import com.dicoding.ohmymovies.data.source.MovieDataSource
 import com.dicoding.ohmymovies.util.Util

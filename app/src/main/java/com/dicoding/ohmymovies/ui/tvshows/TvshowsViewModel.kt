@@ -1,17 +1,16 @@
 package com.dicoding.ohmymovies.ui.tvshows
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
+import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.data.Event
 import com.dicoding.ohmymovies.data.Result
 import com.dicoding.ohmymovies.data.model.TvShowModel
 import com.dicoding.ohmymovies.data.source.MovieRepository
+import com.dicoding.ohmymovies.util.EspressoIdlingResource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
-import com.dicoding.ohmymovies.R
-import com.dicoding.ohmymovies.util.EspressoIdlingResource
 
 class TvshowsViewModel(
     application: Application,
