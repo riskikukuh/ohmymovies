@@ -35,18 +35,14 @@ class HomeActivityTest {
      * Memastikan tab layout tampil dan fragment tiap segmen tampil saat di klik
      */
     @Test
-    fun tabLayoutIsVisibleAndFragmentIsVisible(){
+    fun displayingViewpager(){
         onView(withId(R.id.homeRootView))
             .check(matches(isDisplayed()))
         onView(withId(R.id.toolbar))
             .check(matches(isDisplayed()))
         onView(withId(R.id.toolbar)).check(matchToolbarTitle(context.getString(R.string.app_name)))
 
-        onView(withText("MOVIES")).perform(click())
-        onView(withId(R.id.fragmentMoviesRoot)).check(matches(isDisplayed()))
-
-        onView(withText("TV SHOWS")).perform(click())
-        onView(withId(R.id.fragmentTvshowsRoot)).check(matches(isDisplayed()))
+        onView(withId(R.id.viewPager)).check(matches(isDisplayed()))
     }
 
 
@@ -54,7 +50,7 @@ class HomeActivityTest {
      * Memastikan fragment tvshows tampil saat tab tv shwows di klik
      */
     @Test
-    fun isListTvshowsVisible(){
+    fun showTvShowsPage(){
         onView(withText("TV SHOWS")).perform(click())
         onView(withId(R.id.fragmentTvshowsRoot)).check(matches(isDisplayed()))
     }
@@ -63,7 +59,7 @@ class HomeActivityTest {
      * Memastikan fragment movies tampil saat tab movies di klik
      */
     @Test
-    fun isListMoviesVisible(){
+    fun showMoviesPage(){
         onView(withText("MOVIES")).perform(click())
         onView(withId(R.id.fragmentMoviesRoot)).check(matches(isDisplayed()))
     }

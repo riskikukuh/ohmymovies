@@ -45,7 +45,7 @@ class DetailTvshowActivityTest {
      * Menampilkan data tv show saat diberikan data yang tidak null
      */
     @Test
-    fun test_argsTvshowIsThere() {
+    fun loadDetailTvshow() {
         val intent = Intent(
             ApplicationProvider.getApplicationContext(),
             DetailTvshowActivity::class.java
@@ -81,7 +81,7 @@ class DetailTvshowActivityTest {
      * Menampilkan error saat diberikan data null
      */
     @Test
-    fun test_argsTvshowErrorOrNull() {
+    fun loadDetailTvshowError() {
         val intent = Intent(
             ApplicationProvider.getApplicationContext(),
             DetailTvshowActivity::class.java

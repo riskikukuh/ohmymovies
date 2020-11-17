@@ -45,7 +45,7 @@ class DetailMovieActivityTest {
      * Menampilkan data movie saat diberikan data yang tidak null
      */
     @Test
-    fun test_argsMovieIsThere() {
+    fun loadMovie() {
         val intent = Intent(ApplicationProvider.getApplicationContext(), DetailMovieActivity::class.java).apply {
             putExtra(DetailMovieActivity.ARGS, DetailMovieActivityArgs(MOVIE.title, MOVIE))
         }
@@ -68,7 +68,7 @@ class DetailMovieActivityTest {
      * Menampilkan error saat diberikan data null
      */
     @Test
-    fun test_argsMovieNull(){
+    fun loadMovieError(){
         val intent = Intent(ApplicationProvider.getApplicationContext(), DetailMovieActivity::class.java).apply{
             putExtra(DetailMovieActivity.ARGS, DetailMovieActivityArgs("", null))
         }

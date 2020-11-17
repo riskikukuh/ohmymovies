@@ -43,7 +43,7 @@ class MoviesFragmentTest {
      * Memastikan layout fragment dan recyclerview movies tampil dan scroll ke posisi paling terakhir
      */
     @Test
-    fun test_movies() {
+    fun loadMovies() {
         lateinit var listMovie : RecyclerView
         val factory = MyFragmentFactory()
         launchFragmentInContainer<MoviesFragment>(
@@ -63,7 +63,7 @@ class MoviesFragmentTest {
      * Memastikan layout fragment dan recyclerview movies tampil dan scroll ke posisi paling terakhir saat di refresh
      */
     @Test
-    fun test_swipeDownForRefresh(){
+    fun refreshMovies(){
         lateinit var listMovie : RecyclerView
         val factory = MyFragmentFactory()
         launchFragmentInContainer<MoviesFragment>(

@@ -43,7 +43,7 @@ class TvshowsFragmentTest {
      * memastikan error tidak tampil
      */
     @Test
-    fun test_tvshows() {
+    fun loadTvshows() {
         val factory = MyFragmentFactory()
         launchFragmentInContainer<TvshowsFragment>(
             factory = factory
@@ -52,13 +52,13 @@ class TvshowsFragmentTest {
                 listTvshow = v.listTvshows
             }
         }
+        onView(withId(R.id.error)).check(matches(not(isDisplayed())))
         onView(withId(R.id.fragmentTvshowsRoot))
             .check(matches(isDisplayed()))
         onView(withId(R.id.listTvshows))
             .check(matches(isDisplayed()))
         onView(withId(R.id.listTvshows))
             .perform(RecyclerViewActions.scrollToPosition<TvshowsAdapter.ViewHolder>(listTvshow.size))
-        onView(withId(R.id.error)).check(matches(not(isDisplayed())))
     }
 
     /**
@@ -68,7 +68,7 @@ class TvshowsFragmentTest {
      * Memastikan recyclerview tvshows tampil
      */
     @Test
-    fun test_swipeDownForRefresh(){
+    fun refreshTvShows(){
         val factory = MyFragmentFactory()
         launchFragmentInContainer<TvshowsFragment>(
             factory = factory
@@ -81,6 +81,8 @@ class TvshowsFragmentTest {
         onView(withId(R.id.listTvshows)).check(matches(isDisplayed()))
         onView(withId(R.id.listTvshows)).perform(swipeDown())
         onView(withId(R.id.listTvshows)).check(matches(isDisplayed()))
+        onView(withId(R.id.listTvshows))
+            .perform(RecyclerViewActions.scrollToPosition<TvshowsAdapter.ViewHolder>(listTvshow.size))
     }
 
 }
