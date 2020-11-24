@@ -44,16 +44,16 @@ class TvshowsViewModel(
     val refreshTvshowsEvent : LiveData<Event<Boolean>> = _refreshTvshowsEvent
 
     init {
-        fetchTvshows(true)
+        fetchTvshows()
     }
 
-    fun fetchTvshows(update: Boolean, isFromSwipe : Boolean = false) {
+    fun fetchTvshows(isFromSwipe : Boolean = false) {
         _error.value = false
         _tvshowsShow.value = false
         if (!isFromSwipe) _loading.value = true
         EspressoIdlingResource.increment()
         viewModelScope.launch(dispatcher) {
-            when(val response = movieRepository.getTvShows(update, getApplication())){
+            when(val response = movieRepository.getTvShows()){
                 is Result.Success -> {
                     val isNotEmpty = response.data.isNotEmpty()
                     _tvshowsShow.postValue(isNotEmpty)

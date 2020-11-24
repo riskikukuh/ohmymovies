@@ -16,7 +16,6 @@ import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.data.model.DetailMovieActivityArgs
 import com.dicoding.ohmymovies.ui.adapter.GenresAdapter
 import com.dicoding.ohmymovies.util.EspressoExt.matchToolbarTitle
-import com.dicoding.ohmymovies.util.EspressoExt.withDrawable
 import com.dicoding.ohmymovies.util.EspressoIdlingResource
 import com.dicoding.ohmymovies.util.FakeData.MOVIE
 import kotlinx.android.synthetic.main.activity_detail_movie.*
@@ -47,14 +46,14 @@ class DetailMovieActivityTest {
     @Test
     fun loadMovie() {
         val intent = Intent(ApplicationProvider.getApplicationContext(), DetailMovieActivity::class.java).apply {
-            putExtra(DetailMovieActivity.ARGS, DetailMovieActivityArgs(MOVIE.title, MOVIE))
+            putExtra(DetailMovieActivity.ARGS, DetailMovieActivityArgs(MOVIE.id, MOVIE.title))
         }
         ActivityScenario.launch<DetailMovieActivity>(intent).onActivity {
             listGenre = it.genres
         }
         onView(withId(R.id.error)).check(matches(not(isDisplayed())))
         onView(withId(R.id.toolbar)).check(matchToolbarTitle(MOVIE.title))
-        onView(withId(R.id.posterMovie)).check(matches(withDrawable(R.drawable.poster_alita)))
+        onView(withId(R.id.posterMovie)).check(matches(withContentDescription(MOVIE.posterPath)))
         onView(withId(R.id.rating)).check(matches(withText(MOVIE.getRating())))
         onView(withId(R.id.adult)).check(matches(withText(MOVIE.getAdult())))
         onView(withId(R.id.genres)).perform(RecyclerViewActions.scrollToPosition<GenresAdapter.ViewHolder>(listGenre.size))
@@ -70,7 +69,7 @@ class DetailMovieActivityTest {
     @Test
     fun loadMovieError(){
         val intent = Intent(ApplicationProvider.getApplicationContext(), DetailMovieActivity::class.java).apply{
-            putExtra(DetailMovieActivity.ARGS, DetailMovieActivityArgs("", null))
+            putExtra(DetailMovieActivity.ARGS, DetailMovieActivityArgs(0, MOVIE.title))
         }
         val scenario = ActivityScenario.launch<DetailMovieActivity>(intent).onActivity {
             listGenre = it.genres

@@ -2,16 +2,19 @@ package com.dicoding.ohmymovies.ui.tvshows
 
 import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.test.espresso.IdlingRegistry
 import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.data.Result
 import com.dicoding.ohmymovies.data.model.TvShowModel
 import com.dicoding.ohmymovies.data.source.MovieRepository
+import com.dicoding.ohmymovies.util.EspressoIdlingResource
 import com.dicoding.ohmymovies.util.LiveDataTestUtil
 import com.dicoding.ohmymovies.util.MainCoroutineRule
 import com.dicoding.ohmymovies.util.Util
 import com.google.common.truth.Truth.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -42,25 +45,31 @@ class TvshowsViewModelTest {
     @Before
     fun setUp() {
         viewModel = TvshowsViewModel(application, repository, mainCoroutineRule.coroutineContext)
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+    }
+
+    @After
+    fun tearDown(){
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
     }
 
     @Test
     fun `fetchTvshows from swipe false tvshows is empty success test`() = runBlockingTest {
-        `when`(repository.getTvShows(false, application))
+        `when`(repository.getTvShows())
             .thenReturn(Result.Success(emptyList()))
         `when`(application.getString(R.string.tvshows_empty)).thenReturn("Tvshows Empty")
 
         mainCoroutineRule.pauseDispatcher()
 
-        viewModel.fetchTvshows(false, isFromSwipe = false)
+        viewModel.fetchTvshows(isFromSwipe = false)
 
         assertThat(LiveDataTestUtil.getValue(viewModel.error)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshowsShow)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.loading)).isTrue()
 
-        mainCoroutineRule.resumeDispatcher()
+        Mockito.verify(repository).getTvShows()
 
-        Mockito.verify(repository).getTvShows(false, application)
+        mainCoroutineRule.resumeDispatcher()
 
         assertThat(LiveDataTestUtil.getValue(viewModel.refreshTvshowsEvent)).isNull()
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshowsShow)).isFalse()
@@ -73,21 +82,21 @@ class TvshowsViewModelTest {
 
     @Test
     fun `fetchTvshows from swipe true movies is empty success test`() = runBlockingTest {
-        `when`(repository.getTvShows(false, application))
+        `when`(repository.getTvShows())
             .thenReturn(Result.Success(emptyList()))
         `when`(application.getString(R.string.tvshows_empty)).thenReturn("Tvshows Empty")
 
         mainCoroutineRule.pauseDispatcher()
 
-        viewModel.fetchTvshows(false, isFromSwipe = true)
+        viewModel.fetchTvshows(isFromSwipe = true)
 
         assertThat(LiveDataTestUtil.getValue(viewModel.error)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshowsShow)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.loading)).isFalse()
 
-        mainCoroutineRule.resumeDispatcher()
+        Mockito.verify(repository).getTvShows()
 
-        Mockito.verify(repository).getTvShows(false, application)
+        mainCoroutineRule.resumeDispatcher()
 
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshowsShow)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshows)).isEmpty()
@@ -100,20 +109,20 @@ class TvshowsViewModelTest {
 
     @Test
     fun `fetchTvshows from swipe false movies is not empty success test`() = runBlockingTest {
-        `when`(repository.getTvShows(false, application))
+        `when`(repository.getTvShows())
             .thenReturn(Result.Success(fakeTvshows))
 
         mainCoroutineRule.pauseDispatcher()
 
-        viewModel.fetchTvshows(false, isFromSwipe = false)
+        viewModel.fetchTvshows(isFromSwipe = false)
 
         assertThat(LiveDataTestUtil.getValue(viewModel.error)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshowsShow)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.loading)).isTrue()
 
-        mainCoroutineRule.resumeDispatcher()
+        Mockito.verify(repository).getTvShows()
 
-        Mockito.verify(repository).getTvShows(false, application)
+        mainCoroutineRule.resumeDispatcher()
 
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshowsShow)).isTrue()
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshows)).isEqualTo(fakeTvshows)
@@ -124,20 +133,20 @@ class TvshowsViewModelTest {
 
     @Test
     fun `fetchTvshows from swipe true movies is not empty success test`() = runBlockingTest {
-        `when`(repository.getTvShows(false, application))
+        `when`(repository.getTvShows())
             .thenReturn(Result.Success(fakeTvshows))
 
         mainCoroutineRule.pauseDispatcher()
 
-        viewModel.fetchTvshows(false, isFromSwipe = true)
+        viewModel.fetchTvshows(isFromSwipe = true)
 
         assertThat(LiveDataTestUtil.getValue(viewModel.error)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshowsShow)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.loading)).isFalse()
 
-        mainCoroutineRule.resumeDispatcher()
+        Mockito.verify(repository).getTvShows()
 
-        Mockito.verify(repository).getTvShows(false, application)
+        mainCoroutineRule.resumeDispatcher()
 
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshowsShow)).isTrue()
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshows)).isEqualTo(fakeTvshows)
@@ -148,20 +157,20 @@ class TvshowsViewModelTest {
 
     @Test
     fun `fetchTvshows from swipe false error test`() = runBlockingTest {
-        `when`(repository.getTvShows(false, application))
+        `when`(repository.getTvShows())
             .thenReturn(Result.Error(Util.exception))
 
         mainCoroutineRule.pauseDispatcher()
 
-        viewModel.fetchTvshows(false, isFromSwipe = false)
+        viewModel.fetchTvshows(isFromSwipe = false)
 
         assertThat(LiveDataTestUtil.getValue(viewModel.error)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshowsShow)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.loading)).isTrue()
 
-        mainCoroutineRule.resumeDispatcher()
+        Mockito.verify(repository).getTvShows()
 
-        Mockito.verify(repository).getTvShows(false, application)
+        mainCoroutineRule.resumeDispatcher()
 
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshowsShow)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.error)).isTrue()
@@ -171,20 +180,20 @@ class TvshowsViewModelTest {
 
     @Test
     fun `fetchTvshows from swipe true error test`() = runBlockingTest {
-        `when`(repository.getTvShows(false, application))
+        `when`(repository.getTvShows())
             .thenReturn(Result.Error(Util.exception))
 
         mainCoroutineRule.pauseDispatcher()
 
-        viewModel.fetchTvshows(false, isFromSwipe = true)
+        viewModel.fetchTvshows(isFromSwipe = true)
 
         assertThat(LiveDataTestUtil.getValue(viewModel.error)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshowsShow)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.loading)).isFalse()
 
-        mainCoroutineRule.resumeDispatcher()
+        Mockito.verify(repository).getTvShows()
 
-        Mockito.verify(repository).getTvShows(false, application)
+        mainCoroutineRule.resumeDispatcher()
 
         assertThat(LiveDataTestUtil.getValue(viewModel.tvshowsShow)).isFalse()
         assertThat(LiveDataTestUtil.getValue(viewModel.error)).isTrue()

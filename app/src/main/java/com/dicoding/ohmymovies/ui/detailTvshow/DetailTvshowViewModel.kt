@@ -1,21 +1,27 @@
 package com.dicoding.ohmymovies.ui.detailTvshow
 
-import android.app.Application
-import androidx.lifecycle.*
+import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.dicoding.ohmymovies.R
+import com.dicoding.ohmymovies.data.Result
+import com.dicoding.ohmymovies.data.model.DetailTvshowActivityArgs
 import com.dicoding.ohmymovies.data.model.TvShowModel
+import com.dicoding.ohmymovies.data.source.MovieRepository
+import com.dicoding.ohmymovies.util.EspressoIdlingResource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
-import com.dicoding.ohmymovies.R
-import com.dicoding.ohmymovies.data.model.DetailTvshowActivityArgs
 
 class DetailTvshowViewModel(
-    application: Application,
-    private val dispatcher: CoroutineContext = Dispatchers.IO
-) : AndroidViewModel(application){
+    private val dispatcher: CoroutineContext = Dispatchers.IO,
+    private val repository: MovieRepository,
+) : ViewModel(){
 
-    private val _argsTvshow = MutableLiveData<TvShowModel>()
-    val tvshow: LiveData<TvShowModel> = _argsTvshow
+    private val _tvshowResponse = MutableLiveData<TvShowModel>()
+    val tvshowResponse: LiveData<TvShowModel> = _tvshowResponse
 
     private val _detailTvshowShow = MutableLiveData<Boolean>().apply { value = true }
     val detailTvshowShow : LiveData<Boolean> = _detailTvshowShow
@@ -29,22 +35,34 @@ class DetailTvshowViewModel(
     private val _errorException = MutableLiveData<Exception>()
     val errorException : LiveData<Exception> = _errorException
 
-    fun onNavArgs(data: DetailTvshowActivityArgs?){
+    fun onNavArgs(context: Context, data: DetailTvshowActivityArgs?){
+        if (data?.id != null && data.id > 0){
+            getTvshow(data.id)
+        }else{
+            _detailTvshowShow.value = false
+            _error.value = true
+            _errorException.value = Exception(context.getString(R.string.tvshow_id_not_found))
+        }
+    }
+
+    private fun getTvshow(id : Int) {
         _loading.value = true
         _error.value = false
         _detailTvshowShow.value = false
+        EspressoIdlingResource.increment()
         viewModelScope.launch(dispatcher) {
-            if (data?.tvshow != null){
-                _detailTvshowShow.postValue(true)
-                data.tvshow.apply {
-                    homepage = if (homepage == null || homepage?.isEmpty()!!) getApplication<Application>().getString(R.string.unknown) else homepage
+            when(val response = repository.getTvshow(id)){
+                is Result.Success -> {
+                    _detailTvshowShow.postValue(true)
+                    _tvshowResponse.postValue(response.data)
                 }
-                _argsTvshow.postValue(data.tvshow)
-            }else{
-                _error.postValue(true)
-                _errorException.postValue(Exception(getApplication<Application>().getString(R.string.tvshow_id_not_found)))
+                is Result.Error -> {
+                    _error.postValue(true)
+                    _errorException.postValue(response.exception)
+                }
             }
             _loading.postValue(false)
+            EspressoIdlingResource.decrement()
         }
     }
 

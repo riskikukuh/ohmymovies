@@ -1,16 +1,21 @@
 package com.dicoding.ohmymovies.ui.detailMovie
 
-import android.app.Application
+import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.test.espresso.IdlingRegistry
 import com.dicoding.ohmymovies.R
+import com.dicoding.ohmymovies.data.Result
 import com.dicoding.ohmymovies.data.model.DetailMovieActivityArgs
 import com.dicoding.ohmymovies.data.model.MovieModel
 import com.dicoding.ohmymovies.data.source.MovieRepository
+import com.dicoding.ohmymovies.util.EspressoIdlingResource
 import com.dicoding.ohmymovies.util.LiveDataTestUtil
 import com.dicoding.ohmymovies.util.MainCoroutineRule
 import com.dicoding.ohmymovies.util.Util
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runBlockingTest
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -31,12 +36,15 @@ class DetailMovieViewModelTest {
 
     private val fakeTitle = "fake title"
 
-    private val fakeArgs: DetailMovieActivityArgs = DetailMovieActivityArgs(fakeTitle, fakeMovie)
+    private val fakeArgs: DetailMovieActivityArgs = DetailMovieActivityArgs(1, fakeTitle)
 
     private lateinit var viewModel: DetailMovieViewModel
 
     @Mock
-    private lateinit var application: Application
+    private lateinit var context: Context
+
+    @Mock
+    private lateinit var exception: Exception
 
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
@@ -47,37 +55,41 @@ class DetailMovieViewModelTest {
     @Before
     fun setUp() {
         viewModel =
-            DetailMovieViewModel(application, mainCoroutineRule.coroutineContext)
+            DetailMovieViewModel(mainCoroutineRule.coroutineContext, repository)
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+    }
+
+    @After
+    fun tearDown() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
     }
 
     @Test
-    fun `onNavArgs movie null test`(){
+    fun `onNavArgs error id null test`() {
 
-        `when`(application.getString(R.string.movie_id_not_found)).thenReturn("Movie id not found")
+        `when`(context.getString(R.string.movie_id_not_found)).thenReturn("Movie id not found")
 
-        mainCoroutineRule.pauseDispatcher()
+        viewModel.onNavArgs(context, null)
 
-        viewModel.onNavArgs(fakeArgs.copy(movie = null))
-
-        assertThat(LiveDataTestUtil.getValue(viewModel.loading)).isTrue()
-        assertThat(LiveDataTestUtil.getValue(viewModel.error)).isFalse()
-        assertThat(LiveDataTestUtil.getValue(viewModel.detailMovieShow)).isFalse()
-
-        mainCoroutineRule.resumeDispatcher()
-
-        verify(application).getString(R.string.movie_id_not_found)
+        verify(context).getString(R.string.movie_id_not_found)
 
         assertThat(LiveDataTestUtil.getValue(viewModel.error)).isTrue()
-        assertThat(LiveDataTestUtil.getValue(viewModel.errorException).message).isEqualTo(application.getString(R.string.movie_id_not_found))
-        assertThat(LiveDataTestUtil.getValue(viewModel.loading)).isFalse()
+        assertThat(LiveDataTestUtil.getValue(viewModel.detailMovieShow)).isFalse()
+        assertThat(LiveDataTestUtil.getValue(viewModel.errorException).message).isEqualTo(
+            context.getString(
+                R.string.movie_id_not_found
+            )
+        )
     }
 
     @Test
-    fun `onNavArgs movie not null test`(){
+    fun `onNavArgs success and fetch movie success test`() = runBlockingTest {
+
+        `when`(repository.getMovie(1)).thenReturn(Result.Success(fakeMovie))
 
         mainCoroutineRule.pauseDispatcher()
 
-        viewModel.onNavArgs(fakeArgs)
+        viewModel.onNavArgs(context, fakeArgs)
 
         assertThat(LiveDataTestUtil.getValue(viewModel.loading)).isTrue()
         assertThat(LiveDataTestUtil.getValue(viewModel.error)).isFalse()
@@ -86,7 +98,29 @@ class DetailMovieViewModelTest {
         mainCoroutineRule.resumeDispatcher()
 
         assertThat(LiveDataTestUtil.getValue(viewModel.detailMovieShow)).isTrue()
-        assertThat(LiveDataTestUtil.getValue(viewModel.movie)).isEqualTo(fakeMovie)
+        assertThat(LiveDataTestUtil.getValue(viewModel.movieResponse)).isEqualTo(fakeMovie)
+        assertThat(LiveDataTestUtil.getValue(viewModel.error)).isFalse()
+        assertThat(LiveDataTestUtil.getValue(viewModel.loading)).isFalse()
+    }
+
+    @Test
+    fun `onNavArgs success and fetch movie error test`() = runBlockingTest {
+
+        `when`(repository.getMovie(1)).thenReturn(Result.Error(exception))
+
+        mainCoroutineRule.pauseDispatcher()
+
+        viewModel.onNavArgs(context, fakeArgs)
+
+        assertThat(LiveDataTestUtil.getValue(viewModel.loading)).isTrue()
+        assertThat(LiveDataTestUtil.getValue(viewModel.error)).isFalse()
+        assertThat(LiveDataTestUtil.getValue(viewModel.detailMovieShow)).isFalse()
+
+        mainCoroutineRule.resumeDispatcher()
+
+        assertThat(LiveDataTestUtil.getValue(viewModel.detailMovieShow)).isFalse()
+        assertThat(LiveDataTestUtil.getValue(viewModel.error)).isTrue()
+        assertThat(LiveDataTestUtil.getValue(viewModel.errorException)).isEqualTo(exception)
         assertThat(LiveDataTestUtil.getValue(viewModel.loading)).isFalse()
     }
 }

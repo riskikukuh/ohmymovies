@@ -16,7 +16,6 @@ import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.data.model.DetailTvshowActivityArgs
 import com.dicoding.ohmymovies.ui.adapter.GenresAdapter
 import com.dicoding.ohmymovies.util.EspressoExt.matchToolbarTitle
-import com.dicoding.ohmymovies.util.EspressoExt.withDrawable
 import com.dicoding.ohmymovies.util.EspressoIdlingResource
 import com.dicoding.ohmymovies.util.FakeData.TV_SHOW
 import kotlinx.android.synthetic.main.activity_detail_movie.*
@@ -50,7 +49,7 @@ class DetailTvshowActivityTest {
             ApplicationProvider.getApplicationContext(),
             DetailTvshowActivity::class.java
         ).apply {
-            putExtra(DetailTvshowActivity.ARGS, DetailTvshowActivityArgs(TV_SHOW.name, TV_SHOW))
+            putExtra(DetailTvshowActivity.ARGS, DetailTvshowActivityArgs(TV_SHOW.id, TV_SHOW.name))
         }
         ActivityScenario.launch<DetailTvshowActivity>(intent).onActivity {
             listGenre = it.genres
@@ -60,7 +59,7 @@ class DetailTvshowActivityTest {
         onView(withId(R.id.toolbar))
             .check(matchToolbarTitle(TV_SHOW.name))
         onView(withId(R.id.posterTvshow))
-            .check(matches(withDrawable(R.drawable.poster_naruto_shipudden)))
+            .check(matches(withContentDescription(TV_SHOW.posterPath)))
         onView(withId(R.id.rating))
             .check(matches(withText(TV_SHOW.getRating())))
         onView(withId(R.id.status))
@@ -86,7 +85,7 @@ class DetailTvshowActivityTest {
             ApplicationProvider.getApplicationContext(),
             DetailTvshowActivity::class.java
         ).apply {
-            putExtra(DetailTvshowActivity.ARGS, DetailTvshowActivityArgs("", null))
+            putExtra(DetailTvshowActivity.ARGS, DetailTvshowActivityArgs(0, TV_SHOW.name))
         }
         ActivityScenario.launch<DetailTvshowActivity>(intent).onActivity {
             listGenre = it.genres

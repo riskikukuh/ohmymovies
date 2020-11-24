@@ -1,18 +1,19 @@
 package com.dicoding.ohmymovies.ui.detailMovie
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.dicoding.ohmymovies.data.model.DetailMovieActivityArgs
 import com.dicoding.ohmymovies.databinding.ActivityDetailMovieBinding
 import com.dicoding.ohmymovies.ui.adapter.GenresAdapter
-import com.dicoding.ohmymovies.util.getViewModelFactory
+import com.dicoding.ohmymovies.util.Constants
 import com.dicoding.ohmymovies.util.setupToolbar
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailMovieActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         val TAG = DetailMovieActivity::class.java.simpleName
         const val ARGS = "DetailMovieActivityArgs"
     }
@@ -20,10 +21,11 @@ class DetailMovieActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailMovieBinding
     private val genresAdapter = GenresAdapter()
     private var args: DetailMovieActivityArgs? = null
-    private val detailMovieViewModel by viewModels<DetailMovieViewModel> { getViewModelFactory() }
+    private val detailMovieViewModel: DetailMovieViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        DetailMovieModule.loadModules()
         binding = ActivityDetailMovieBinding.inflate(layoutInflater).apply {
             lifecycleOwner = this@DetailMovieActivity
             viewModel = detailMovieViewModel
@@ -38,9 +40,10 @@ class DetailMovieActivity : AppCompatActivity() {
 
     private fun setupObserver() {
         with(detailMovieViewModel) {
-            movie.observe(this@DetailMovieActivity) {
-                if (it.posterImageResource > 0) binding.posterMovie.setImageResource(it.posterImageResource)
-                if (it.genres != null) genresAdapter.addGenres(it.genres)
+            movieResponse.observe(this@DetailMovieActivity) {
+                Glide.with(this@DetailMovieActivity).load(Constants.BASE_URL_POSTER + it.posterPath)
+                    .into(binding.posterMovie)
+                genresAdapter.addGenres(it.genres ?: emptyList())
             }
 
             errorException.observe(this@DetailMovieActivity) {
@@ -50,8 +53,8 @@ class DetailMovieActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        detailMovieViewModel.onNavArgs(args)
-        setupToolbar(binding.toolbar, args?.title){
+        detailMovieViewModel.onNavArgs(this, args)
+        setupToolbar(binding.toolbar, args?.title) {
             finish()
         }
         with(binding.genres) {

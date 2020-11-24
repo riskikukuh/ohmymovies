@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.dicoding.ohmymovies.data.model.TvShowModel
 import com.dicoding.ohmymovies.databinding.ItemTvshowBinding
+import com.dicoding.ohmymovies.util.Constants
 import com.dicoding.ohmymovies.util.DiffCallback
 
 class TvshowsAdapter(private val diffCallback: DiffCallback = DiffCallback(), private val onClickCallback : (TvShowModel) -> Unit) : RecyclerView.Adapter<TvshowsAdapter.ViewHolder>(){
@@ -35,7 +37,7 @@ class TvshowsAdapter(private val diffCallback: DiffCallback = DiffCallback(), pr
     class ViewHolder private constructor(private val binding : ItemTvshowBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(data : TvShowModel, onClickCallback: (TvShowModel) -> Unit){
             binding.tvshow = data
-            binding.imagePoster.setImageResource(data.posterImageResource)
+            Glide.with(binding.root.context).load(Constants.BASE_URL_POSTER + data.posterPath).into(binding.imagePoster)
             binding.itemTvshow.setOnClickListener {
                 onClickCallback.invoke(data)
             }

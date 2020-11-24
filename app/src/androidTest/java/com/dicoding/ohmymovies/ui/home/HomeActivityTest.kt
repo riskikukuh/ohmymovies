@@ -3,6 +3,7 @@ package com.dicoding.ohmymovies.ui.home
 //import androidx.test.espresso.contrib.RecyclerViewActions
 import android.content.Context
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -11,6 +12,8 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.util.EspressoExt.matchToolbarTitle
+import com.dicoding.ohmymovies.util.EspressoIdlingResource
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -29,6 +32,12 @@ class HomeActivityTest {
     @Before
     fun setUp(){
         context = InstrumentationRegistry.getInstrumentation().targetContext
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+    }
+
+    @After
+    fun tearDown(){
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
     }
 
     /**

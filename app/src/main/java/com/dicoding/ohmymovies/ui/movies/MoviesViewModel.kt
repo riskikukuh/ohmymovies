@@ -13,48 +13,48 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-open class MoviesViewModel(
+class MoviesViewModel(
     application: Application,
     private val repository: MovieRepository,
     private val dispatcher: CoroutineContext = Dispatchers.IO
 ) : AndroidViewModel(application) {
 
     private val _movies = MutableLiveData<List<MovieModel>>()
-    open val movies : LiveData<List<MovieModel>> = _movies
+    val movies : LiveData<List<MovieModel>> = _movies
 
     private val _moviesShow = MutableLiveData<Boolean>()
-    open val moviesShow : LiveData<Boolean> = _moviesShow
+    val moviesShow : LiveData<Boolean> = _moviesShow
 
     val isMoviesEmpty = Transformations.map(_movies){
         it.isEmpty()
     }
 
     private val _emptyMessage = MutableLiveData<String>()
-    open val emptyMessage : LiveData<String> = _emptyMessage
+    val emptyMessage : LiveData<String> = _emptyMessage
 
     private val _loading = MutableLiveData<Boolean>().apply { value = false }
-    open val loading: LiveData<Boolean> = _loading
+    val loading: LiveData<Boolean> = _loading
 
     private val _error = MutableLiveData<Boolean>().apply { value = false }
-    open val error : LiveData<Boolean> = _error
+    val error : LiveData<Boolean> = _error
 
     private val _errorException = MutableLiveData<Exception>()
-    open val errorException : LiveData<Exception> = _errorException
+    val errorException : LiveData<Exception> = _errorException
 
     private val _refreshMoviesEvent = MutableLiveData<Event<Boolean>>()
-    open val refreshMoviesEvent : LiveData<Event<Boolean>> = _refreshMoviesEvent
+    val refreshMoviesEvent : LiveData<Event<Boolean>> = _refreshMoviesEvent
 
     init {
-        fetchMovies(true)
+        fetchMovies()
     }
 
-    fun fetchMovies(update: Boolean, isFromSwipe : Boolean = false) {
+    fun fetchMovies(isFromSwipe : Boolean = false) {
         _error.value = false
         _moviesShow.value = false
         if (!isFromSwipe) _loading.value = true
         EspressoIdlingResource.increment()
         viewModelScope.launch(dispatcher) {
-            when(val response = repository.getMovies(update, getApplication())){
+            when(val response = repository.getMovies()){
                 is Success -> {
                     val movieShow = response.data.isNotEmpty()
                     _moviesShow.postValue(movieShow)

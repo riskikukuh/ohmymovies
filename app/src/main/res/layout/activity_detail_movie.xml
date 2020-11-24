@@ -54,6 +54,7 @@
                         android:id="@+id/posterMovie"
                         android:layout_width="120dp"
                         android:layout_height="180dp"
+                        android:contentDescription="@{viewModel.movieResponse.posterPath}"
                         android:src="@drawable/poster_bohemian" />
 
                 </androidx.cardview.widget.CardView>
@@ -76,7 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
-                    android:text="@{viewModel.movie.rating}"
+                    android:text="@{viewModel.movieResponse.rating}"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toRightOf="@id/wrapperPoster"
                     app:layout_constraintTop_toBottomOf="@id/labelRating" />
@@ -100,7 +101,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
-                    android:text="@{viewModel.movie.adult}"
+                    android:text="@{viewModel.movieResponse.adult}"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toRightOf="@id/wrapperPoster"
                     app:layout_constraintTop_toBottomOf="@id/labelAdult" />
@@ -124,7 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
-                    android:text="@{viewModel.movie.status}"
+                    android:text="@{viewModel.movieResponse.status}"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toRightOf="@id/wrapperPoster"
                     app:layout_constraintTop_toBottomOf="@id/labelStatus" />
@@ -166,7 +167,7 @@
                     android:id="@+id/overview"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.movie.overview}"
+                    android:text="@{viewModel.movieResponse.overview}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/labelOverview" />
@@ -187,7 +188,7 @@
                     android:id="@+id/homepage"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.movie.homepage}"
+                    android:text="@{viewModel.movieResponse.homepage}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/labelHomepage" />
@@ -208,7 +209,7 @@
                     android:id="@+id/spokenLanguage"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.movie.spokenLanguageAsString}"
+                    android:text="@{viewModel.movieResponse.spokenLanguageAsString}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/labelSpokenLanguage" />
@@ -229,7 +230,7 @@
                     android:id="@+id/releaseDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.movie.releaseDate}"
+                    android:text="@{viewModel.movieResponse.releaseDate}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/labelReleaseDate" />
@@ -241,6 +242,7 @@
                 layout="@layout/error"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:visibility="@{viewModel.error ? View.VISIBLE : View.GONE, default=gone}" />
 
             <ProgressBar

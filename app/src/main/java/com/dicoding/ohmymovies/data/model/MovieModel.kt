@@ -19,7 +19,6 @@ data class MovieModel(
     @SerializedName("overview") val overview: String? = "",
     @SerializedName("popularity") val popularity: Double? = 0.0,
     @SerializedName("poster_path") val posterPath: String? = "",
-    var posterImageResource: Int = 0,
     @SerializedName("production_companies") val productionCompanies: List<ProductionCompany>? = emptyList(),
     @SerializedName("production_countries") val productionCountries: List<ProductionCountry>? = emptyList(),
     @SerializedName("release_date") val releaseDate: String? = "",

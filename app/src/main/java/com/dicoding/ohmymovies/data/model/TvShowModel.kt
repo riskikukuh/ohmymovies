@@ -28,10 +28,10 @@ data class TvShowModel(
     @SerializedName("overview") val overview: String? = "",
     @SerializedName("popularity") val popularity: Double? = 0.0,
     @SerializedName("poster_path") val posterPath: String? = "",
-    var posterImageResource : Int = 0,
     @SerializedName("production_companies") val productionCompanies: List<ProductionCompany>? = emptyList(),
     @SerializedName("seasons") val seasons: List<Season>? = emptyList(),
     @SerializedName("status") val status: String? = "",
+    @SerializedName("tagline") val tagline : String? = "",
     @SerializedName("type") val type: String? = "",
     @SerializedName("vote_average") val voteAverage: Double? = 0.0,
     @SerializedName("vote_count") val voteCount: Int? = 0

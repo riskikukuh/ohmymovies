@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class DetailMovieActivityArgs(
-    val title : String,
-    val movie : MovieModel?
+    val id : Int? = 0,
+    val title : String? = ""
 ) : Parcelable

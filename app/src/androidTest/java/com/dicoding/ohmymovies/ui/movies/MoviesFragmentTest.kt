@@ -1,10 +1,6 @@
 package com.dicoding.ohmymovies.ui.movies
 
-//import androidx.fragment.app.testing.launchFragmentInContainer
-//import androidx.test.espresso.contrib.RecyclerViewActions
-//import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
-//import androidx.test.ext.junit.rules.ActivityScenarioRule
-//import org.junit.Test.mockito.Mock
+
 import androidx.core.view.size
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.recyclerview.widget.RecyclerView

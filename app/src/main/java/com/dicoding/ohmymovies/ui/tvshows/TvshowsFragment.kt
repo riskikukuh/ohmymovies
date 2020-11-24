@@ -6,23 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ohmymovies.data.EventObserver
 import com.dicoding.ohmymovies.data.model.DetailTvshowActivityArgs
-import com.dicoding.ohmymovies.data.model.TvShowModel
 import com.dicoding.ohmymovies.databinding.FragmentTvshowsBinding
 import com.dicoding.ohmymovies.ui.detailTvshow.DetailTvshowActivity
-import com.dicoding.ohmymovies.util.getViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TvshowsFragment : Fragment() {
 
     private lateinit var binding : FragmentTvshowsBinding
 
-    private val tvshowsViewModel by viewModels<TvshowsViewModel> { getViewModelFactory() }
+    private val tvshowsViewModel : TvshowsViewModel by viewModel()
 
     private val listAdapter = TvshowsAdapter{
-        openDetailTvshow(it)
+        openDetailTvshow(it.id, it.name)
+    }
+
+    init {
+        TvshowsModule.loadModules()
     }
 
     override fun onCreateView(
@@ -64,7 +66,7 @@ class TvshowsFragment : Fragment() {
 
     private fun setupComponent() {
         binding.swipeRefreshLayout.setOnRefreshListener {
-            tvshowsViewModel.fetchTvshows(true, isFromSwipe = true)
+            tvshowsViewModel.fetchTvshows(isFromSwipe = true)
         }
         with(binding.listTvshows){
             layoutManager = LinearLayoutManager(context)
@@ -72,8 +74,8 @@ class TvshowsFragment : Fragment() {
         }
     }
 
-    private fun openDetailTvshow(data : TvShowModel?){
-        val args = DetailTvshowActivityArgs(data?.name ?: "", data)
+    private fun openDetailTvshow(id : Int?, title : String?){
+        val args = DetailTvshowActivityArgs(id, title)
         val intent = Intent(activity, DetailTvshowActivity::class.java)
         intent.putExtra(DetailTvshowActivity.ARGS, args)
         startActivity(intent)

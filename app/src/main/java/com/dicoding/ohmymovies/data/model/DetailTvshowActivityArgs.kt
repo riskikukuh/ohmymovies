@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class DetailTvshowActivityArgs(
-    val title : String,
-    val tvshow : TvShowModel?
+    val id : Int? = 0,
+    val title : String? = ""
 ) : Parcelable

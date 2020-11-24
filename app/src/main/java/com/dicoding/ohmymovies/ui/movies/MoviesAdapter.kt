@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.dicoding.ohmymovies.data.model.MovieModel
 import com.dicoding.ohmymovies.databinding.ItemMovieBinding
+import com.dicoding.ohmymovies.util.Constants
 import com.dicoding.ohmymovies.util.DiffCallback
 
 class MoviesAdapter(private val diffCallback: DiffCallback = DiffCallback(), private val onClickCallback : (MovieModel) -> Unit) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(){
@@ -34,8 +36,8 @@ class MoviesAdapter(private val diffCallback: DiffCallback = DiffCallback(), pri
 
     class ViewHolder private constructor(private val binding : ItemMovieBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(data: MovieModel, onClickCallback: (MovieModel) -> Unit){
+            Glide.with(binding.root.context).load(Constants.BASE_URL_POSTER + data.posterPath).into(binding.imagePoster)
             binding.movie = data
-            binding.imagePoster.setImageResource(data.posterImageResource)
             binding.itemMovie.setOnClickListener {
                 onClickCallback.invoke(data)
             }

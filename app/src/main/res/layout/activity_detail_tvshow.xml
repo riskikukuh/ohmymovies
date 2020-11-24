@@ -55,6 +55,7 @@
                         android:id="@+id/posterTvshow"
                         android:layout_width="120dp"
                         android:layout_height="180dp"
+                        android:contentDescription="@{viewModel.tvshowResponse.posterPath}"
                         android:src="@drawable/poster_bohemian" />
 
                 </androidx.cardview.widget.CardView>
@@ -77,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
-                    android:text="@{viewModel.tvshow.rating}"
+                    android:text="@{viewModel.tvshowResponse.rating}"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toTopOf="@id/labelIsAiring"
                     app:layout_constraintLeft_toRightOf="@id/wrapperPoster"
@@ -102,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
-                    android:text="@{viewModel.tvshow.inProduction}"
+                    android:text="@{viewModel.tvshowResponse.inProduction}"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toTopOf="@id/labelStatus"
                     app:layout_constraintLeft_toRightOf="@id/wrapperPoster"
@@ -127,7 +128,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
-                    android:text="@{viewModel.tvshow.status}"
+                    android:text="@{viewModel.tvshowResponse.status}"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toRightOf="@id/wrapperPoster"
                     app:layout_constraintTop_toBottomOf="@id/labelStatus" />
@@ -168,7 +169,7 @@
                     android:id="@+id/overview"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.tvshow.overview}"
+                    android:text="@{viewModel.tvshowResponse.overview}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/labelOverview" />
@@ -188,7 +189,7 @@
                     android:id="@+id/homepage"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.tvshow.homepage}"
+                    android:text="@{viewModel.tvshowResponse.homepage}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/labelHomepage" />
@@ -208,7 +209,7 @@
                     android:id="@+id/language"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.tvshow.languages}"
+                    android:text="@{viewModel.tvshowResponse.languages}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/labelLanguage" />
@@ -228,7 +229,7 @@
                     android:id="@+id/episodeCount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.tvshow.episodeCountAsString()}"
+                    android:text="@{viewModel.tvshowResponse.episodeCountAsString()}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/labelEpisodeCount" />
