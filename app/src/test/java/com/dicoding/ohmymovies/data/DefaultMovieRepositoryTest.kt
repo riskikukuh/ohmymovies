@@ -1,5 +1,6 @@
 package com.dicoding.ohmymovies.data
 
+import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.espresso.IdlingRegistry
 import com.dicoding.ohmymovies.data.Result.Error
@@ -9,7 +10,9 @@ import com.dicoding.ohmymovies.data.source.MovieRepository
 import com.dicoding.ohmymovies.util.EspressoIdlingResource
 import com.dicoding.ohmymovies.util.Util.exception
 import com.dicoding.ohmymovies.util.Util.fakeMovie
+import com.dicoding.ohmymovies.util.Util.fakeMovieEntity
 import com.dicoding.ohmymovies.util.Util.fakeTvShow
+import com.dicoding.ohmymovies.util.Util.fakeTvshowEntity
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -18,6 +21,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.runners.MockitoJUnitRunner
 
@@ -33,6 +37,9 @@ class DefaultMovieRepositoryTest {
 
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
+
+    @Mock
+    private lateinit var context : Context
 
     @Before
     fun setUp() {
@@ -98,6 +105,62 @@ class DefaultMovieRepositoryTest {
         `when`(repository.getTvshow(0)).thenReturn(Error(exception))
         assertThat(repository.getTvshow(0)).isEqualTo(Error(exception))
         verify(repository).getTvshow(0)
+    }
+
+    @Test
+    fun `getFavoriteMovies success test`() = runBlockingTest {
+        `when`(repository.getFavoriteMovies()).thenReturn(Success(listOf(fakeMovieEntity)))
+        assertThat(repository.getFavoriteMovies()).isEqualTo((Success(listOf(fakeMovies))))
+        verify(repository).getFavoriteMovies()
+    }
+
+    @Test
+    fun `getFavoriteMovies error test`() = runBlockingTest {
+        `when`(repository.getFavoriteMovies()).thenReturn(Error(exception))
+        assertThat(repository.getFavoriteMovies()).isEqualTo((Error(exception)))
+        verify(repository).getFavoriteMovies()
+    }
+
+    @Test
+    fun `getFavoriteTvshows success test`() = runBlockingTest {
+        `when`(repository.getFavoriteTvshows()).thenReturn(Success(listOf(fakeTvshowEntity)))
+        assertThat(repository.getFavoriteTvshows()).isEqualTo((Success(listOf(fakeTvshowEntity))))
+        verify(repository).getFavoriteTvshows()
+    }
+
+    @Test
+    fun `getFavoriteTvshows error test`() = runBlockingTest {
+        `when`(repository.getFavoriteTvshows()).thenReturn(Error(exception))
+        assertThat(repository.getFavoriteTvshows()).isEqualTo(Error(exception))
+        verify(repository).getFavoriteTvshows()
+    }
+
+    @Test
+    fun `getFavoriteMovie success test`() = runBlockingTest {
+        `when`(repository.getFavoriteMovie(context, 1)).thenReturn(Success(fakeMovieEntity))
+        assertThat(repository.getFavoriteMovie(context, 1)).isEqualTo(Success(fakeMovieEntity))
+        verify(repository).getFavoriteMovie(context, 1)
+    }
+
+    @Test
+    fun `getFavoriteMovie error test`() = runBlockingTest {
+        `when`(repository.getFavoriteMovie(context, 0)).thenReturn(Error(exception))
+        assertThat(repository.getFavoriteMovie(context, 0)).isEqualTo(Error(exception))
+        verify(repository).getFavoriteMovie(context, 0)
+    }
+
+    @Test
+    fun `getFavoriteTvshow success test`() = runBlockingTest {
+        `when`(repository.getFavoriteTvshow(context, 1)).thenReturn(Success(fakeTvshowEntity))
+        assertThat(repository.getFavoriteTvshow(context, 1)).isEqualTo(Success(fakeTvshowEntity))
+        verify(repository).getFavoriteTvshow(context, 1)
+    }
+
+    @Test
+    fun `getFavoriteTvshow error test`() = runBlockingTest {
+        `when`(repository.getFavoriteTvshow(context, 0)).thenReturn(Error(exception))
+        assertThat(repository.getFavoriteTvshow(context, 0)).isEqualTo(Error(exception))
+        verify(repository).getFavoriteTvshow(context, 0)
     }
 
 }

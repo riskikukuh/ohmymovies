@@ -1,54 +1,63 @@
 package com.dicoding.ohmymovies.data.source.local
 
-//class MoviesLocalDataSource : MovieDataSource{
-//
-//    private val gson = Gson()
-//    private val moviesFilename = "movies.json"
-//    private val tvshowFilename = "tvshows.json"
-//
-//    private fun Context.generateImageResource(name : String) : Int {
-//        return resources.getIdentifier(name, "drawable", packageName)
-//    }
-//
-//    override suspend fun getMovies(context : Context): Result<List<MovieModel>> {
-//        return try{
-//            val text = Util.readFromFile(context, moviesFilename)
-//            return if (text != null) {
-//                val result = mutableListOf<MovieModel>()
-//                val type = object : TypeToken<List<MovieModel>>(){}.type
-//                val list = gson.fromJson<List<MovieModel>>(text, type)
-//                withContext(Dispatchers.Default){
-//                    list.forEach{
-//                        val cast = it
-//                        cast.posterImageResource = context.generateImageResource(it.posterPath ?: "")
-//                        result.add(cast)
-//                    }
-//                }
-//                Result.Success(result)
-//            }else{
-//                Result.Error(Exception("Text empty"))
-//            }
-//        }catch (e : Exception){
-//            Result.Error(e)
-//        }
-//    }
-//
-//    override suspend fun getTvshows(context: Context): Result<List<TvShowModel>> {
-//        val text = Util.readFromFile(context, tvshowFilename)
-//        return if (text != null) {
-//            val result = mutableListOf<TvShowModel>()
-//            val type = object : TypeToken<List<TvShowModel>>(){}.type
-//            val list = gson.fromJson<List<TvShowModel>>(text, type)
-//            withContext(Dispatchers.Default){
-//                list.forEach{
-//                    val cast = it
-//                    cast.posterImageResource = context.generateImageResource(it.posterPath ?: "")
-//                    result.add(cast)
-//                }
-//            }
-//            Result.Success(result)
-//        }else{
-//            Result.Error(Exception(""))
-//        }
-//    }
-//}
+import android.content.Context
+import com.dicoding.ohmymovies.R
+import com.dicoding.ohmymovies.data.Result
+import com.dicoding.ohmymovies.data.Result.Success
+import com.dicoding.ohmymovies.data.Result.Error
+import com.dicoding.ohmymovies.data.model.entity.MovieEntity
+import com.dicoding.ohmymovies.data.model.entity.TvshowEntity
+import com.dicoding.ohmymovies.data.source.MovieLocalDataSource
+
+class MoviesLocalDataSource(private val favoritesDao : FavoritesDao) : MovieLocalDataSource {
+    override suspend fun getFavoriteMovies(): Result<List<MovieEntity>> {
+        return try {
+            val response = favoritesDao.getAllFavoritesMovie()
+            Success(response)
+        }catch (e : Exception){
+            Error(e)
+        }
+    }
+
+    override suspend fun getFavoriteTvshows(): Result<List<TvshowEntity>> {
+        return try {
+            val response =favoritesDao.getAllFavoritesTvshow()
+            Success(response)
+        }catch (e :Exception){
+            Error(e)
+        }
+    }
+
+    override suspend fun getFavoriteMovie(context : Context, id: Int): Result<MovieEntity> {
+        if (id <= 0){
+            return Error(Exception(context.getString(R.string.movie_id_not_found)))
+        }
+        return try {
+            val response = favoritesDao.getMovie(id)
+            if (response != null){
+                Success(response)
+            }else{
+                Error(Exception("Movie Error"))
+            }
+        }catch (e : Exception){
+            Error(e)
+        }
+    }
+
+    override suspend fun getFavoriteTvshow(context : Context, id: Int): Result<TvshowEntity> {
+        if (id <= 0){
+            return Error(Exception(context.getString(R.string.tvshow_id_not_found)))
+        }
+        return try {
+            val response = favoritesDao.getTvshow(id)
+            if (response != null){
+                Success(response)
+            }else{
+                Error(Exception("Tvshow Error"))
+            }
+        }catch (e : Exception){
+            Error(e)
+        }
+    }
+
+}
