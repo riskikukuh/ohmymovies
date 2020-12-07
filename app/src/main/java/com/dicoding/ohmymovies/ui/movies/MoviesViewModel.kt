@@ -68,12 +68,37 @@ class MoviesViewModel(
                     _errorException.postValue(response.exception)
                 }
             }
-            if (isFromSwipe){
+            if (isFromSwipe) {
                 _refreshMoviesEvent.postValue(Event(false))
-            }else{
+            } else {
                 _loading.postValue(false)
             }
             EspressoIdlingResource.decrement()
+        }
+    }
+
+    fun checkFavoriteState(movieId: Int) {
+        var isFavorite = false
+        viewModelScope.launch(dispatcher) {
+            isFavorite = when (val response = repository.getFavoriteMovie(movieId)) {
+                is Success -> {
+                    true
+                }
+                is Error -> {
+                    false
+                }
+            }
+            changeFavoriteState(movieId, isFavorite)
+        }
+    }
+
+    private fun changeFavoriteState(id: Int, data: Boolean) {
+        movies.value?.let {
+            val temp = movies.value!!
+            temp.firstOrNull { it.id == id }?.apply {
+                isFavorite = data
+            }
+            _movies.postValue(temp)
         }
     }
 

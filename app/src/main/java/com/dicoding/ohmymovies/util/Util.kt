@@ -1,6 +1,7 @@
 package com.dicoding.ohmymovies.util
 
 import android.content.Context
+import android.widget.Toast
 import java.io.IOException
 
 object Util {
@@ -13,10 +14,14 @@ object Util {
             val buffer = ByteArray(len)
             stream.read(buffer)
             result.append(String(buffer))
-        }catch (e : Exception){
+        } catch (e: Exception) {
             throw IOException("")
         }
         return result.toString()
+    }
+
+    fun showToast(context: Context, msg: String) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 
 }

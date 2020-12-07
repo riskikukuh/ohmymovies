@@ -1,9 +1,13 @@
 package com.dicoding.ohmymovies.ui.home
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.databinding.ActivityHomeBinding
+import com.dicoding.ohmymovies.ui.favorite.FavoriteActivity
 import com.dicoding.ohmymovies.ui.movies.MoviesFragment
 import com.dicoding.ohmymovies.ui.tvshows.TvshowsFragment
 import com.dicoding.ohmymovies.util.setupToolbar
@@ -38,5 +42,29 @@ class HomeActivity : AppCompatActivity() {
         binding.viewPager.adapter = adapter
         tabMediator = TabLayoutMediator(binding.tabLayout, binding.viewPager, tabLayoutStrategy)
         tabMediator.attach()
+    }
+
+    private fun openFavoritePage() {
+        val intent = Intent(this, FavoriteActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.apply {
+            inflate(R.menu.favorite_menu, menu)
+        }
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.favorite -> {
+                openFavoritePage()
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
     }
 }

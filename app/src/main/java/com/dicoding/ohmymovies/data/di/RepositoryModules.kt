@@ -16,10 +16,16 @@ import org.koin.dsl.module
 
 object RepositoryModules : BaseModule {
     override val modules: List<Module>
-        get() = listOf(repoModule, remoteDataSource, localDataSource, db)
+        get() = listOf(db, localDataSource, repoModule, remoteDataSource)
 
     private val repoModule = module {
-        single<MovieRepository> { DefaultMovieRepository(localDataSource = get(), remoteDataSource = get())}
+        single<MovieRepository> {
+            DefaultMovieRepository(
+                context = androidContext(),
+                localDataSource = get(),
+                remoteDataSource = get()
+            )
+        }
     }
 
     private val remoteDataSource = module{
@@ -30,8 +36,15 @@ object RepositoryModules : BaseModule {
         single<MovieLocalDataSource> { MoviesLocalDataSource(get()) }
     }
 
-    private val db = module{
-        single { Room.databaseBuilder(androidContext(), FavoritesDatabase::class.java, "favoritesDatabase").build().favoritesDao() }
+    private val db = module {
+        single {
+            Room.databaseBuilder(
+                androidContext().applicationContext,
+                FavoritesDatabase::class.java,
+                "favoritesDatabase"
+            ).fallbackToDestructiveMigration().build()
+        }
+        factory<FavoritesDao> { get<FavoritesDatabase>().favoritesDao() }
     }
 
 }

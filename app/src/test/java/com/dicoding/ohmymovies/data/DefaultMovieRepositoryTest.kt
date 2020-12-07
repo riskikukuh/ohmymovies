@@ -2,17 +2,21 @@ package com.dicoding.ohmymovies.data
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
+import androidx.paging.PagedList
 import androidx.test.espresso.IdlingRegistry
 import com.dicoding.ohmymovies.data.Result.Error
 import com.dicoding.ohmymovies.data.Result.Success
 import com.dicoding.ohmymovies.data.model.MovieModel
+import com.dicoding.ohmymovies.data.model.entity.MovieEntity
+import com.dicoding.ohmymovies.data.model.entity.TvshowEntity
 import com.dicoding.ohmymovies.data.source.MovieRepository
 import com.dicoding.ohmymovies.util.EspressoIdlingResource
 import com.dicoding.ohmymovies.util.Util.exception
 import com.dicoding.ohmymovies.util.Util.fakeMovie
-import com.dicoding.ohmymovies.util.Util.fakeMovieEntity
+import com.dicoding.ohmymovies.util.Util.fakeMovieWithGenreLanguage
 import com.dicoding.ohmymovies.util.Util.fakeTvShow
-import com.dicoding.ohmymovies.util.Util.fakeTvshowEntity
+import com.dicoding.ohmymovies.util.Util.fakeTvshowWithGenreLanguage
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -39,7 +43,13 @@ class DefaultMovieRepositoryTest {
     var instantExecutorRule = InstantTaskExecutorRule()
 
     @Mock
-    private lateinit var context : Context
+    private lateinit var context: Context
+
+    @Mock
+    private lateinit var packedListMovie: PagedList<MovieEntity>
+
+    @Mock
+    private lateinit var packedListTvshow: PagedList<TvshowEntity>
 
     @Before
     fun setUp() {
@@ -47,7 +57,7 @@ class DefaultMovieRepositoryTest {
     }
 
     @After
-    fun tearDown(){
+    fun tearDown() {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
     }
 
@@ -108,59 +118,67 @@ class DefaultMovieRepositoryTest {
     }
 
     @Test
-    fun `getFavoriteMovies success test`() = runBlockingTest {
-        `when`(repository.getFavoriteMovies()).thenReturn(Success(listOf(fakeMovieEntity)))
-        assertThat(repository.getFavoriteMovies()).isEqualTo((Success(listOf(fakeMovies))))
+    fun `getFavoriteMovies success test`() {
+        val favoriteMovies = MutableLiveData<Result<PagedList<MovieEntity>>>()
+        favoriteMovies.value = Success(packedListMovie)
+        `when`(repository.getFavoriteMovies()).thenReturn(favoriteMovies)
+        assertThat(repository.getFavoriteMovies()).isEqualTo(favoriteMovies)
         verify(repository).getFavoriteMovies()
     }
 
     @Test
-    fun `getFavoriteMovies error test`() = runBlockingTest {
-        `when`(repository.getFavoriteMovies()).thenReturn(Error(exception))
-        assertThat(repository.getFavoriteMovies()).isEqualTo((Error(exception)))
+    fun `getFavoriteMovies error test`() {
+        val favoriteMovies = MutableLiveData<Result<PagedList<MovieEntity>>>()
+        favoriteMovies.value = Error(exception)
+        `when`(repository.getFavoriteMovies()).thenReturn(favoriteMovies)
+        assertThat(repository.getFavoriteMovies()).isEqualTo(favoriteMovies)
         verify(repository).getFavoriteMovies()
     }
 
     @Test
-    fun `getFavoriteTvshows success test`() = runBlockingTest {
-        `when`(repository.getFavoriteTvshows()).thenReturn(Success(listOf(fakeTvshowEntity)))
-        assertThat(repository.getFavoriteTvshows()).isEqualTo((Success(listOf(fakeTvshowEntity))))
+    fun `getFavoriteTvshows success test`() {
+        val favoriteTvshows = MutableLiveData<Result<PagedList<TvshowEntity>>>()
+        favoriteTvshows.value = Success(packedListTvshow)
+        `when`(repository.getFavoriteTvshows()).thenReturn(favoriteTvshows)
+        assertThat(repository.getFavoriteTvshows()).isEqualTo(favoriteTvshows)
         verify(repository).getFavoriteTvshows()
     }
 
     @Test
-    fun `getFavoriteTvshows error test`() = runBlockingTest {
-        `when`(repository.getFavoriteTvshows()).thenReturn(Error(exception))
-        assertThat(repository.getFavoriteTvshows()).isEqualTo(Error(exception))
+    fun `getFavoriteTvshows error test`() {
+        val favoriteTvshows = MutableLiveData<Result<PagedList<TvshowEntity>>>()
+        favoriteTvshows.value = Error(exception)
+        `when`(repository.getFavoriteTvshows()).thenReturn(favoriteTvshows)
+        assertThat(repository.getFavoriteTvshows()).isEqualTo(favoriteTvshows)
         verify(repository).getFavoriteTvshows()
     }
 
     @Test
     fun `getFavoriteMovie success test`() = runBlockingTest {
-        `when`(repository.getFavoriteMovie(context, 1)).thenReturn(Success(fakeMovieEntity))
-        assertThat(repository.getFavoriteMovie(context, 1)).isEqualTo(Success(fakeMovieEntity))
-        verify(repository).getFavoriteMovie(context, 1)
+        `when`(repository.getFavoriteMovie(1)).thenReturn(Success(fakeMovieWithGenreLanguage))
+        assertThat(repository.getFavoriteMovie(1)).isEqualTo(Success(fakeMovieWithGenreLanguage))
+        verify(repository).getFavoriteMovie(1)
     }
 
     @Test
     fun `getFavoriteMovie error test`() = runBlockingTest {
-        `when`(repository.getFavoriteMovie(context, 0)).thenReturn(Error(exception))
-        assertThat(repository.getFavoriteMovie(context, 0)).isEqualTo(Error(exception))
-        verify(repository).getFavoriteMovie(context, 0)
+        `when`(repository.getFavoriteMovie(0)).thenReturn(Error(exception))
+        assertThat(repository.getFavoriteMovie(0)).isEqualTo(Error(exception))
+        verify(repository).getFavoriteMovie(0)
     }
 
     @Test
     fun `getFavoriteTvshow success test`() = runBlockingTest {
-        `when`(repository.getFavoriteTvshow(context, 1)).thenReturn(Success(fakeTvshowEntity))
-        assertThat(repository.getFavoriteTvshow(context, 1)).isEqualTo(Success(fakeTvshowEntity))
-        verify(repository).getFavoriteTvshow(context, 1)
+        `when`(repository.getFavoriteTvshow(1)).thenReturn(Success(fakeTvshowWithGenreLanguage))
+        assertThat(repository.getFavoriteTvshow(1)).isEqualTo(Success(fakeTvshowWithGenreLanguage))
+        verify(repository).getFavoriteTvshow(1)
     }
 
     @Test
     fun `getFavoriteTvshow error test`() = runBlockingTest {
-        `when`(repository.getFavoriteTvshow(context, 0)).thenReturn(Error(exception))
-        assertThat(repository.getFavoriteTvshow(context, 0)).isEqualTo(Error(exception))
-        verify(repository).getFavoriteTvshow(context, 0)
+        `when`(repository.getFavoriteTvshow(0)).thenReturn(Error(exception))
+        assertThat(repository.getFavoriteTvshow(0)).isEqualTo(Error(exception))
+        verify(repository).getFavoriteTvshow(0)
     }
 
 }

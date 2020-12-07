@@ -1,9 +1,12 @@
 package com.dicoding.ohmymovies.ui.detailTvshow
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.data.model.DetailTvshowActivityArgs
 import com.dicoding.ohmymovies.databinding.ActivityDetailTvshowBinding
 import com.dicoding.ohmymovies.ui.adapter.GenresAdapter
@@ -23,6 +26,8 @@ class DetailTvshowActivity : AppCompatActivity() {
     private val detailTvshowViewModel: DetailTvshowViewModel by viewModel()
     private val genresAdapter by lazy { GenresAdapter() }
     private lateinit var binding: ActivityDetailTvshowBinding
+    private var itemFavorite: MenuItem? = null
+    private var itemNotFavorite: MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +65,45 @@ class DetailTvshowActivity : AppCompatActivity() {
         with(binding.genres) {
             adapter = genresAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menu?.clear()
+        menuInflater.inflate(R.menu.favorite_menu_detail_activity, menu)
+        itemFavorite = menu?.findItem(R.id.removeFromFavorite)
+        itemNotFavorite = menu?.findItem(R.id.addToFavorite)
+        if (args != null) {
+            if (args!!.isFavorite != null && args!!.isFavorite!!) {
+                itemNotFavorite?.isVisible = false
+            } else {
+                itemFavorite?.isVisible = false
+            }
+        } else {
+            itemFavorite?.isVisible = false
+        }
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.addToFavorite -> {
+                detailTvshowViewModel.addToFavorite {
+                    itemFavorite?.isVisible = true
+                    item.isVisible = false
+                }
+                true
+            }
+            R.id.removeFromFavorite -> {
+                detailTvshowViewModel.removeFromFavorite {
+                    itemNotFavorite?.isVisible = true
+                    item.isVisible = false
+                }
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
         }
     }
 }

@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            app:titleTextColor="@android:color/white" />
+            app:titleTextColor="@color/textColor" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"

@@ -1,5 +1,6 @@
 package com.dicoding.ohmymovies.ui.detailMovie
 
+import android.app.Application
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.espresso.IdlingRegistry
@@ -41,6 +42,9 @@ class DetailMovieViewModelTest {
     private lateinit var viewModel: DetailMovieViewModel
 
     @Mock
+    private lateinit var application: Application
+
+    @Mock
     private lateinit var context: Context
 
     @Mock
@@ -55,7 +59,7 @@ class DetailMovieViewModelTest {
     @Before
     fun setUp() {
         viewModel =
-            DetailMovieViewModel(mainCoroutineRule.coroutineContext, repository)
+            DetailMovieViewModel(application, mainCoroutineRule.coroutineContext, repository)
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
     }
 

@@ -67,13 +67,39 @@ class TvshowsViewModel(
                     _errorException.postValue(response.exception)
                 }
             }
-            if (isFromSwipe){
+            if (isFromSwipe) {
                 _refreshTvshowsEvent.postValue(Event(false))
-            }else{
+            } else {
                 _loading.postValue(false)
             }
             EspressoIdlingResource.decrement()
         }
     }
+
+    fun checkFavoriteState(tvshowId: Int) {
+        var isFavorite: Boolean
+        viewModelScope.launch(dispatcher) {
+            isFavorite = when (val response = movieRepository.getFavoriteTvshow(tvshowId)) {
+                is Result.Success -> {
+                    true
+                }
+                is Result.Error -> {
+                    false
+                }
+            }
+            changeFavoriteState(tvshowId, isFavorite)
+        }
+    }
+
+    private fun changeFavoriteState(id: Int, data: Boolean) {
+        tvshows.value?.let {
+            val temp = tvshows.value!!
+            temp.firstOrNull { it.id == id }?.apply {
+                isFavorite = data
+            }
+            _tvshows.postValue(temp)
+        }
+    }
+
 
 }

@@ -15,12 +15,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TvshowsFragment : Fragment() {
 
-    private lateinit var binding : FragmentTvshowsBinding
+    private lateinit var binding: FragmentTvshowsBinding
 
-    private val tvshowsViewModel : TvshowsViewModel by viewModel()
+    private val tvshowsViewModel: TvshowsViewModel by viewModel()
 
-    private val listAdapter = TvshowsAdapter{
-        openDetailTvshow(it.id, it.name)
+    private var tvshowIdTempOpen: Int = 0
+
+    private val listAdapter = TvshowsAdapter {
+        openDetailTvshow(it.id, it.name, it.isFavorite)
     }
 
     init {
@@ -68,14 +70,20 @@ class TvshowsFragment : Fragment() {
         binding.swipeRefreshLayout.setOnRefreshListener {
             tvshowsViewModel.fetchTvshows(isFromSwipe = true)
         }
-        with(binding.listTvshows){
+        with(binding.listTvshows) {
             layoutManager = LinearLayoutManager(context)
             adapter = listAdapter
         }
     }
 
-    private fun openDetailTvshow(id : Int?, title : String?){
-        val args = DetailTvshowActivityArgs(id, title)
+    override fun onResume() {
+        super.onResume()
+        tvshowsViewModel.checkFavoriteState(tvshowIdTempOpen)
+    }
+
+    private fun openDetailTvshow(id: Int?, title: String?, isFavorite: Boolean?) {
+        tvshowIdTempOpen = id ?: 0
+        val args = DetailTvshowActivityArgs(id, title, false, isFavorite)
         val intent = Intent(activity, DetailTvshowActivity::class.java)
         intent.putExtra(DetailTvshowActivity.ARGS, args)
         startActivity(intent)

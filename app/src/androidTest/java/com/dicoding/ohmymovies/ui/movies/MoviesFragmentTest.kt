@@ -52,7 +52,11 @@ class MoviesFragmentTest {
         onView(withId(R.id.error)).check(matches(not(isDisplayed())))
         onView(withId(R.id.fragmentMoviesRoot)).check(matches(isDisplayed()))
         onView(withId(R.id.listMovie)).check(matches(isDisplayed()))
-        onView(withId(R.id.listMovie)).perform(RecyclerViewActions.scrollToPosition<MoviesAdapter.ViewHolder>(listMovie.size))
+        onView(withId(R.id.listMovie)).perform(
+            RecyclerViewActions.scrollToPosition<BaseMovieViewHolder>(
+                listMovie.size
+            )
+        )
     }
 
     /**
@@ -73,7 +77,11 @@ class MoviesFragmentTest {
         onView(withId(R.id.listMovie)).check(matches(isDisplayed()))
         onView(withId(R.id.listMovie)).perform(swipeDown())
         onView(withId(R.id.listMovie)).check(matches(isDisplayed()))
-        onView(withId(R.id.listMovie)).perform(RecyclerViewActions.scrollToPosition<MoviesAdapter.ViewHolder>(listMovie.size))
+        onView(withId(R.id.listMovie)).perform(
+            RecyclerViewActions.scrollToPosition<BaseMovieViewHolder>(
+                listMovie.size
+            )
+        )
     }
 
 }

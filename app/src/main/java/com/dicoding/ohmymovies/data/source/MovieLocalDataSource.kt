@@ -1,16 +1,26 @@
 package com.dicoding.ohmymovies.data.source
 
-import android.content.Context
+import androidx.paging.DataSource
 import com.dicoding.ohmymovies.data.Result
 import com.dicoding.ohmymovies.data.model.entity.MovieEntity
+import com.dicoding.ohmymovies.data.model.entity.MovieWithGenreLanguage
 import com.dicoding.ohmymovies.data.model.entity.TvshowEntity
+import com.dicoding.ohmymovies.data.model.entity.TvshowWithGenreLanguage
 
-interface MovieLocalDataSource{
-    suspend fun getFavoriteMovies() : Result<List<MovieEntity>>
+interface MovieLocalDataSource {
+    fun getFavoriteMovies(): Result<DataSource.Factory<Int, MovieEntity>>
 
-    suspend fun getFavoriteTvshows() : Result<List<TvshowEntity>>
+    fun getFavoriteTvshows(): Result<DataSource.Factory<Int, TvshowEntity>>
 
-    suspend fun getFavoriteMovie(context : Context, id : Int) : Result<MovieEntity>
+    suspend fun getFavoriteMovie(id: Int): Result<MovieWithGenreLanguage>
 
-    suspend fun getFavoriteTvshow(context : Context, id : Int) : Result<TvshowEntity>
+    suspend fun getFavoriteTvshow(id: Int): Result<TvshowWithGenreLanguage>
+
+    suspend fun addMovieToFavorite(vararg movieEntity: MovieEntity): Result<Boolean>
+
+    suspend fun addTvshowToFavorite(vararg tvshow: TvshowEntity): Result<Boolean>
+
+    suspend fun deleteMovieFromFavorite(movie: MovieWithGenreLanguage): Result<Boolean>
+
+    suspend fun deleteTvshowFromFavorite(tvshow: TvshowWithGenreLanguage): Result<Boolean>
 }

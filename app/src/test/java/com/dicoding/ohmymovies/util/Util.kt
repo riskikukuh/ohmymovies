@@ -5,7 +5,9 @@ import com.dicoding.ohmymovies.data.model.EpisodeToAir
 import com.dicoding.ohmymovies.data.model.MovieModel
 import com.dicoding.ohmymovies.data.model.TvShowModel
 import com.dicoding.ohmymovies.data.model.entity.MovieEntity
+import com.dicoding.ohmymovies.data.model.entity.MovieWithGenreLanguage
 import com.dicoding.ohmymovies.data.model.entity.TvshowEntity
+import com.dicoding.ohmymovies.data.model.entity.TvshowWithGenreLanguage
 
 object Util {
     private val fakeBelongsToCollection = BelongsToCollection(0, "", "", "")
@@ -38,7 +40,7 @@ object Util {
     )
 
     private val episodeToAir = EpisodeToAir(
-        "", 0, 0, "", "", "",0,0,"", 0.0,0
+        "", 0, 0, "", "", "", 0, 0, "", 0.0, 0
     )
 
     val fakeTvShow = TvShowModel(
@@ -76,62 +78,18 @@ object Util {
     val exception = Exception("Test Exception")
 
     val fakeMovieEntity = MovieEntity(
-        1,
-        false,
-        "",
-        fakeBelongsToCollection,
-        0,
-        emptyList(),
-        "Unknown",
-        "",
-        "",
-        "",
-        "",
-        0.0,
-        "",
-        emptyList(),
-        emptyList(),
-        "",
-        0,
-        0,
-        emptyList(),
-        "",
-        "",
-        "",
-        false,
-        0.0,
-        0
+        1, false, "", 0, "", "", "", "", "", 0.0, "", "", 0, 0, "", "", "", false, 0.0, 0
+    )
+
+    val fakeMovieWithGenreLanguage = MovieWithGenreLanguage(
+        fakeMovieEntity, emptyList(), emptyList()
     )
 
     val fakeTvshowEntity = TvshowEntity(
-        1,
-        "",
-        emptyList(),
-        emptyList(),
-        "",
-        emptyList(),
-        "Unknown",
-        false,
-        emptyList(),
-        "",
-        episodeToAir,
-        "",
-        episodeToAir,
-        emptyList(),
-        0,
-        0,
-        emptyList(),
-        "",
-        "",
-        "",
-        0.0,
-        "",
-        emptyList(),
-        emptyList(),
-        "",
-        "",
-        "",
-        0.0,
-        0
+        1, "", "", "", false, "", "", 0, 0, "", "", "", 0.0, "", "", "", "", 0.0, 0
+    )
+
+    val fakeTvshowWithGenreLanguage = TvshowWithGenreLanguage(
+        fakeTvshowEntity, emptyList(), emptyList()
     )
 }

@@ -58,7 +58,7 @@ class TvshowsFragmentTest {
         onView(withId(R.id.listTvshows))
             .check(matches(isDisplayed()))
         onView(withId(R.id.listTvshows))
-            .perform(RecyclerViewActions.scrollToPosition<TvshowsAdapter.ViewHolder>(listTvshow.size))
+            .perform(RecyclerViewActions.scrollToPosition<BaseTvshowsViewHolder>(listTvshow.size))
     }
 
     /**
@@ -82,7 +82,7 @@ class TvshowsFragmentTest {
         onView(withId(R.id.listTvshows)).perform(swipeDown())
         onView(withId(R.id.listTvshows)).check(matches(isDisplayed()))
         onView(withId(R.id.listTvshows))
-            .perform(RecyclerViewActions.scrollToPosition<TvshowsAdapter.ViewHolder>(listTvshow.size))
+            .perform(RecyclerViewActions.scrollToPosition<BaseTvshowsViewHolder>(listTvshow.size))
     }
 
 }

@@ -4,10 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.dicoding.ohmymovies.data.model.entity.MovieEntity
-import com.dicoding.ohmymovies.data.model.entity.TvshowEntity
+import com.dicoding.ohmymovies.data.model.entity.*
 
-@Database(version = 1, entities = [MovieEntity::class, TvshowEntity::class], exportSchema = false)
+@Database(
+    version = 1,
+    entities = [MovieEntity::class, TvshowEntity::class, GenreEntity::class, LanguageEntity::class, SpokenLanguageEntity::class],
+    exportSchema = false
+)
 abstract class FavoritesDatabase : RoomDatabase() {
 
     abstract fun favoritesDao() : FavoritesDao

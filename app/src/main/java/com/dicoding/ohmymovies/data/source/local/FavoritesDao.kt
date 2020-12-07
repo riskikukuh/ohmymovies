@@ -1,45 +1,55 @@
 package com.dicoding.ohmymovies.data.source.local
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import com.dicoding.ohmymovies.data.model.entity.MovieEntity
-import com.dicoding.ohmymovies.data.model.entity.TvshowEntity
+import androidx.paging.DataSource
+import androidx.room.*
+import com.dicoding.ohmymovies.data.model.entity.*
 
 @Dao
 interface FavoritesDao {
 
     @Query("SELECT * FROM favoritesMovie")
-    suspend fun getAllFavoritesMovie() : List<MovieEntity>
+    fun getAllFavoritesMovie(): DataSource.Factory<Int, MovieEntity>
 
-    @Query("SELECT * FROM favoritesMovie WHERE id = :id")
-    suspend fun getMovie(id : Int) : MovieEntity?
+    @Transaction
+    @Query("SELECT * FROM favoritesMovie WHERE movieId = :id")
+    suspend fun getMovie(id: Int): MovieWithGenreLanguage?
 
-    @Insert
-    suspend fun insertAllMovies(vararg users : MovieEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMovies(vararg movie: MovieEntity)
 
     @Delete
-    suspend fun deleteMovie(user : MovieEntity)
+    suspend fun deleteMovie(movie: MovieEntity)
 
     @Query("SELECT * FROM favoritesTvshow")
-    suspend fun getAllFavoritesTvshow() : List<TvshowEntity>
+    fun getAllFavoritesTvshow(): DataSource.Factory<Int, TvshowEntity>
 
-    @Query("SELECT * FROM favoritesTvshow WHERE id = :id")
-    suspend fun getTvshow(id : Int) : TvshowEntity?
+    @Transaction
+    @Query("SELECT * FROM favoritesTvshow WHERE tvshowId = :id")
+    suspend fun getTvshow(id: Int): TvshowWithGenreLanguage?
 
-    @Insert
-    suspend fun insertAllTvshows(vararg users : TvshowEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertTvshows(vararg tvshow: TvshowEntity)
 
     @Delete
-    suspend fun deleteTvshow(user : TvshowEntity)
+    suspend fun deleteTvshow(tvshow: TvshowEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertGenres(vararg genre: GenreEntity)
 
+    @Query("DELETE FROM genres WHERE genreId IN (:ids)")
+    suspend fun deleteGenres(ids: List<Int>)
 
-//    @Query("SELECT * FROM favoriteUsers")
-//    fun findAll() : Cursor
-//
-//    @Query("SELECT * FROM favoriteUsers WHERE id = :id")
-//    fun findUser(id : Int) : Cursor
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertLanguage(vararg language: LanguageEntity)
+
+    @Query("DELETE FROM languages WHERE id IN (:ids)")
+    suspend fun deleteLanguages(ids: List<Int>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSpokenLanguage(vararg spokenLanguages: SpokenLanguageEntity)
+
+    @Query("DELETE FROM spokenLanguage WHERE id IN (:ids)")
+    suspend fun deleteSpokenLanguage(ids: List<Int>)
+
 
 }

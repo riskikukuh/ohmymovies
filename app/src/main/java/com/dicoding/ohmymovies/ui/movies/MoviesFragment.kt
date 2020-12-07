@@ -19,10 +19,12 @@ class MoviesFragment : Fragment() {
 
     private lateinit var binding: FragmentMoviesBinding
 
-    private val moviesViewModel : MoviesViewModel by viewModel()
+    private val moviesViewModel: MoviesViewModel by viewModel()
+
+    private var movieIdTempOpen: Int = 0
 
     private val listAdapter = MoviesAdapter {
-        openDetailMovie(it.id, it.title)
+        openDetailMovie(it.id, it.title, it.isFavorite)
     }
 
     init {
@@ -67,7 +69,7 @@ class MoviesFragment : Fragment() {
     }
 
     private fun setupComponent() {
-        binding.swipeRefreshLayout.setOnRefreshListener{
+        binding.swipeRefreshLayout.setOnRefreshListener {
             moviesViewModel.fetchMovies(isFromSwipe = true)
         }
         with(binding.listMovie) {
@@ -76,8 +78,14 @@ class MoviesFragment : Fragment() {
         }
     }
 
-    private fun openDetailMovie(id : Int?, title: String?){
-        val args = DetailMovieActivityArgs(id, title)
+    override fun onResume() {
+        super.onResume()
+        moviesViewModel.checkFavoriteState(movieIdTempOpen)
+    }
+
+    private fun openDetailMovie(id: Int?, title: String?, isFavorite: Boolean?) {
+        movieIdTempOpen = id ?: 0
+        val args = DetailMovieActivityArgs(id, title, false, isFavorite)
         val intent = Intent(requireContext(), DetailMovieActivity::class.java)
         intent.putExtra(DetailMovieActivity.ARGS, args)
         requireContext().startActivity(intent)

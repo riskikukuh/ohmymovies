@@ -1,6 +1,5 @@
 package com.dicoding.ohmymovies.ui.splash
 
-//import com.dicoding.ohmymovies.util.EspressoIdlingResource
 import android.content.Context
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView

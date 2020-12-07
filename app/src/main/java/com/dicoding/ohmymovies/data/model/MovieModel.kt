@@ -1,6 +1,9 @@
 package com.dicoding.ohmymovies.data.model
 
 import android.os.Parcelable
+import com.dicoding.ohmymovies.data.model.entity.MovieEntity
+import com.dicoding.ohmymovies.data.model.entity.MovieWithGenreLanguage
+import com.dicoding.ohmymovies.data.model.entity.SpokenLanguageEntity
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
@@ -30,7 +33,8 @@ data class MovieModel(
     @SerializedName("title") val title: String = "",
     @SerializedName("video") val video: Boolean? = false,
     @SerializedName("vote_average") val voteAverage: Double? = 0.0,
-    @SerializedName("vote_count") val voteCount: Int? = 0
+    @SerializedName("vote_count") val voteCount: Int? = 0,
+    var isFavorite: Boolean = false
 ) : Parcelable {
     fun getSpokenLanguageAsString() =
         spokenLanguages?.mapIndexed { index, item -> if (index == spokenLanguages.lastIndex && item.name.isNotEmpty()) item.name else item.name + ", " }
@@ -38,6 +42,66 @@ data class MovieModel(
 
     fun getRating() = voteAverage.toString()
     fun getAdult() = if (adult != null && adult) "Yes" else "No"
+
+    companion object {
+        fun fromMovieEntityWithGenre(data: MovieWithGenreLanguage): MovieModel = MovieModel(
+            data.movie.adult,
+            data.movie.backdropPath,
+            null,
+            data.movie.budget,
+            data.genres.map { Genre.fromGenreEntity(it) },
+            data.movie.homepage,
+            data.movie.id,
+            data.movie.imdbId,
+            data.movie.originalLanguage,
+            data.movie.originalTitle,
+            data.movie.overview,
+            data.movie.popularity,
+            data.movie.posterPath,
+            emptyList(),
+            emptyList(),
+            data.movie.releaseDate,
+            data.movie.revenue,
+            data.movie.runtime,
+            data.spokenLanguage.map { SpokenLanguages.fromSpokenLanguageEntity(it) },
+            data.movie.status,
+            data.movie.tagline,
+            data.movie.title,
+            data.movie.video,
+            data.movie.voteAverage,
+            data.movie.voteCount,
+            data.movie.isFavorite
+        )
+
+        fun fromMovieEntity(data: MovieEntity): MovieModel = MovieModel(
+            data.adult,
+            data.backdropPath,
+            null,
+            data.budget,
+            emptyList(),
+            data.homepage,
+            data.id,
+            data.imdbId,
+            data.originalLanguage,
+            data.originalTitle,
+            data.overview,
+            data.popularity,
+            data.posterPath,
+            emptyList(),
+            emptyList(),
+            data.releaseDate,
+            data.revenue,
+            data.runtime,
+            emptyList(),
+            data.status,
+            data.tagline,
+            data.title,
+            data.video,
+            data.voteAverage,
+            data.voteCount,
+            data.isFavorite
+        )
+    }
 }
 
 @Parcelize
@@ -62,4 +126,11 @@ data class ProductionCountry(
 data class SpokenLanguages(
     @SerializedName("iso_639_1") val iso_639_1: String = "",
     @SerializedName("name") val name: String = ""
-) : Parcelable
+) : Parcelable {
+    companion object {
+        fun fromSpokenLanguageEntity(data: SpokenLanguageEntity): SpokenLanguages = SpokenLanguages(
+            data.iso_639_1,
+            data.name
+        )
+    }
+}

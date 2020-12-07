@@ -42,4 +42,6 @@ object EspressoExt{
             return view is ImageView && view.drawable.toBitmap().sameAs(expectedBitmap)
         }
     }
+
+
 }

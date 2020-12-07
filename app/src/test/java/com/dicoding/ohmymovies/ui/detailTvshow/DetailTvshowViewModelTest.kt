@@ -1,5 +1,6 @@
 package com.dicoding.ohmymovies.ui.detailTvshow
 
+import android.app.Application
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.espresso.IdlingRegistry
@@ -41,10 +42,13 @@ class DetailTvshowViewModelTest {
     private lateinit var viewModel: DetailTvshowViewModel
 
     @Mock
-    private lateinit var context : Context
+    private lateinit var application: Application
 
     @Mock
-    private lateinit var exception : Exception
+    private lateinit var context: Context
+
+    @Mock
+    private lateinit var exception: Exception
 
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
@@ -55,7 +59,7 @@ class DetailTvshowViewModelTest {
     @Before
     fun setUp() {
         viewModel =
-            DetailTvshowViewModel(mainCoroutineRule.coroutineContext, repository)
+            DetailTvshowViewModel(application, mainCoroutineRule.coroutineContext, repository)
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
     }
 
