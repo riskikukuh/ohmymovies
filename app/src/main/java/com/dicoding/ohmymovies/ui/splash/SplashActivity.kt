@@ -6,7 +6,6 @@ import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.ui.home.HomeActivity
-import com.dicoding.ohmymovies.util.EspressoIdlingResource
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,13 +15,11 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun setupComponent() {
-        EspressoIdlingResource.increment()
         object : CountDownTimer(1200, 1200) {
             override fun onTick(millisUntilFinished: Long) {}
 
             override fun onFinish() {
                 openHome()
-                EspressoIdlingResource.decrement()
             }
 
         }.start()
