@@ -1,20 +1,25 @@
 package com.ohmymovies.core.data.source.local
 
+import android.content.Context
 import androidx.paging.DataSource
+import com.ohmymovies.core.R
 import com.ohmymovies.core.data.Result
 import com.ohmymovies.core.data.Result.Error
 import com.ohmymovies.core.data.Result.Success
 import com.ohmymovies.core.data.source.local.entity.*
 import com.ohmymovies.core.data.source.local.room.FavoritesDao
 
-class MoviesLocalDataSource(private val favoritesDao: FavoritesDao) {
+class MoviesLocalDataSource(context: Context, private val favoritesDao: FavoritesDao) {
+
+    private val nullError = context.getString(R.string.null_error)
+    private val unknownError = context.getString(R.string.unknown_error)
 
     fun getFavoriteMovies(): Result<DataSource.Factory<Int, MovieEntity>> {
         return try {
             val response = favoritesDao.getAllFavoritesMovie()
             Success(response)
         } catch (e: Exception) {
-            Error(e.message ?: "Movies Error")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -23,7 +28,7 @@ class MoviesLocalDataSource(private val favoritesDao: FavoritesDao) {
             val response = favoritesDao.getAllFavoritesTvshow()
             Success(response)
         } catch (e: Exception) {
-            Error(e.message ?: "Movies Error")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -33,10 +38,10 @@ class MoviesLocalDataSource(private val favoritesDao: FavoritesDao) {
             if (response != null) {
                 Success(response)
             } else {
-                Error("Movie Error")
+                Error(nullError)
             }
         } catch (e: Exception) {
-            Error(e.message ?: "Movie error")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -46,10 +51,10 @@ class MoviesLocalDataSource(private val favoritesDao: FavoritesDao) {
             if (response != null) {
                 Success(response)
             } else {
-                Error("Tvshow Error")
+                Error(nullError)
             }
         } catch (e: Exception) {
-            Error(e.message ?: "Tvshow error")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -58,7 +63,7 @@ class MoviesLocalDataSource(private val favoritesDao: FavoritesDao) {
             favoritesDao.insertSpokenLanguage(*spokenLanguageEntity)
             Success(true)
         } catch (e: Exception) {
-            Error(e.message ?: "Error add genre to favorites")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -67,7 +72,7 @@ class MoviesLocalDataSource(private val favoritesDao: FavoritesDao) {
             favoritesDao.insertLanguage(*languageEntity)
             Success(true)
         } catch (e: Exception) {
-            Error(e.message ?: "Error add genre to favorites")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -76,7 +81,7 @@ class MoviesLocalDataSource(private val favoritesDao: FavoritesDao) {
             favoritesDao.insertGenres(*genreEntity)
             Success(true)
         } catch (e: Exception) {
-            Error(e.message ?: "Error add genre to favorites")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -85,7 +90,7 @@ class MoviesLocalDataSource(private val favoritesDao: FavoritesDao) {
             favoritesDao.insertMovies(*movieEntity)
             Success(true)
         } catch (e: Exception) {
-            Error(e.message ?: "Error add movie to favorites")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -94,7 +99,7 @@ class MoviesLocalDataSource(private val favoritesDao: FavoritesDao) {
             favoritesDao.insertTvshows(*tvshowEntity)
             Success(true)
         } catch (e: Exception) {
-            Error(e.message ?: "Error add Tvshow to favorites")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -111,7 +116,7 @@ class MoviesLocalDataSource(private val favoritesDao: FavoritesDao) {
             favoritesDao.deleteSpokenLanguage(listSpokenLanguageId)
             Success(true)
         } catch (e: Exception) {
-            Error(e.message ?: "Error delete movie from favorite")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -128,7 +133,7 @@ class MoviesLocalDataSource(private val favoritesDao: FavoritesDao) {
             favoritesDao.deleteSpokenLanguage(listSpokenLanguageId)
             Success(true)
         } catch (e: Exception) {
-            Error(e.message ?: "Error delete tvshow from favorite")
+            Error(e.message ?: unknownError)
         }
     }
 

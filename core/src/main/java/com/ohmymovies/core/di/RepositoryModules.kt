@@ -28,11 +28,11 @@ object RepositoryModules : BaseModule {
     }
 
     private val remoteDataSource = module {
-        single { MovieRemoteDataSource(get(), apiKey = Constants.API_KEY) }
+        single { MovieRemoteDataSource(androidContext(), get(), apiKey = Constants.API_KEY) }
     }
 
     private val localDataSource = module {
-        single { MoviesLocalDataSource(get()) }
+        single { MoviesLocalDataSource(androidContext(), get()) }
     }
 
     private val db = module {

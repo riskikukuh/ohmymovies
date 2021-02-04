@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name">OhMyMovies</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="unknown">Unknown</string>
-
     <string-array name="tabName">
         <item>MOVIES</item>
         <item>TV SHOWS</item>
@@ -17,4 +14,15 @@
     <string name="tvshows_empty">Tvshows empty</string>
     <string name="tvshow_id_not_found">Tvshow id not found</string>
     <string name="content_description_logo_ohmymovies">Logo OhMyMovies</string>
+    <string name="rating_label">Rating</string>
+    <string name="adult_label">Adult</string>
+    <string name="status_label">Status</string>
+    <string name="genres_label">Genres</string>
+    <string name="overview_label">Overview</string>
+    <string name="homepage_label">Homepage</string>
+    <string name="spoken_language_label">Spoken language</string>
+    <string name="release_date_label">Release date</string>
+    <string name="airing_label">Airing</string>
+    <string name="language_label">Language</string>
+    <string name="total_episode_label">Total Episode</string>
 </resources>

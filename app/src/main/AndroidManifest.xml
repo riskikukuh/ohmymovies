@@ -12,17 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.favorite.FavoriteActivity"></activity>
-        <activity android:name=".ui.detailMovie.DetailMovieActivity" />
-        <activity android:name=".ui.detailTvshow.DetailTvshowActivity" />
-        <activity android:name=".ui.splash.SplashActivity">
+        <activity android:name="com.dicoding.ohmymovies.detailmovie.DetailMovieActivity" />
+        <activity android:name="com.dicoding.ohmymovies.detailtvshow.DetailTvshowActivity" />
+        <activity android:name="com.dicoding.ohmymovies.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.HomeActivity" />
+        <activity android:name="com.dicoding.ohmymovies.home.HomeActivity" />
     </application>
 
 </manifest>

@@ -2,12 +2,12 @@ package com.ohmymovies.core.utils
 
 import androidx.recyclerview.widget.DiffUtil
 
-class DiffCallback : DiffUtil.Callback() {
+class DiffCallback<T> : DiffUtil.Callback() {
 
-    private var oldList: List<Any> = emptyList()
-    private var newList: List<Any> = emptyList()
+    private var oldList: List<T> = emptyList()
+    private var newList: List<T> = emptyList()
 
-    fun setList(oldList: List<Any>, newList: List<Any>) {
+    fun setList(oldList: List<T>, newList: List<T>) {
         this.oldList = oldList
         this.newList = newList
     }

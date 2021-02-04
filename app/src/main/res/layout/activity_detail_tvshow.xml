@@ -12,7 +12,7 @@
 
         <variable
             name="viewModel"
-            type="com.dicoding.ohmymovies.ui.detailTvshow.DetailTvshowViewModel" />
+            type="com.dicoding.ohmymovies.detailtvshow.DetailTvshowViewModel" />
     </data>
 
     <ScrollView
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="@{viewModel.detailTvshowShow ? View.VISIBLE : View.GONE, default=visible}"
-                tools:context=".ui.detailTvshow.DetailTvshowActivity"
+                tools:context=".detailtvshow.DetailTvshowActivity"
                 android:padding="24dp">
 
                 <androidx.cardview.widget.CardView
@@ -65,7 +65,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
-                    android:text="Rating"
+                    android:text="@string/rating_label"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@id/rating"
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
                     android:layout_marginTop="8dp"
-                    android:text="Airing"
+                    android:text="@string/airing_label"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@id/isAiring"
@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
                     android:layout_marginTop="8dp"
-                    android:text="Status"
+                    android:text="@string/status_label"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@id/status"
@@ -138,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Genres"
+                    android:text="@string/genres_label"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -159,7 +159,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Overview"
+                    android:text="@string/overview_label"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -179,7 +179,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Homepage"
+                    android:text="@string/homepage_label"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -199,7 +199,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Language"
+                    android:text="@string/language_label"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -219,7 +219,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Total Episode"
+                    android:text="@string/total_episode_label"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -241,12 +241,14 @@
                 layout="@layout/error"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:visibility="@{viewModel.error ? View.VISIBLE : View.GONE, default=gone}" />
 
             <ProgressBar
                 android:id="@+id/loading"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_gravity="center"
                 android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE, default=gone}" />
 
         </LinearLayout>

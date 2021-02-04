@@ -1,4 +1,4 @@
-package com.dicoding.ohmymovies.data
+package com.dicoding.ohmymovies.util
 
 import androidx.lifecycle.Observer
 

@@ -8,14 +8,14 @@
 
         <variable
             name="viewModel"
-            type="com.dicoding.ohmymovies.ui.movies.MoviesViewModel" />
+            type="com.dicoding.ohmymovies.movies.MoviesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fragmentMoviesRoot"
-        tools:context=".ui.movies.MoviesFragment">
+        tools:context=".movies.MoviesFragment">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"

@@ -21,4 +21,9 @@
 
     <!--  Error  -->
     <string name="unknown_error">An unknown error has occurred</string>
+    <string name="null_error">Null error has occurred</string>
+
+    <!--  Content Description  -->
+    <string name="content_empty_state">State Empty</string>
+    <string name="content_error_state">State Error</string>
 </resources>

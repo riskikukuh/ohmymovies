@@ -1,5 +1,7 @@
 package com.ohmymovies.core.data.source.remote
 
+import android.content.Context
+import com.ohmymovies.core.R
 import com.ohmymovies.core.data.Result
 import com.ohmymovies.core.data.Result.Error
 import com.ohmymovies.core.data.Result.Success
@@ -11,7 +13,13 @@ import com.ohmymovies.core.data.source.remote.response.TvshowsResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
-class MovieRemoteDataSource(private val service: MoviesApi, private val apiKey: String = "") {
+class MovieRemoteDataSource(
+    context: Context,
+    private val service: MoviesApi,
+    private val apiKey: String = ""
+) {
+
+    private val unknownError = context.getString(R.string.unknown_error)
 
     suspend fun getMovies(): Result<MoviesResponse> {
         return try {
@@ -19,10 +27,10 @@ class MovieRemoteDataSource(private val service: MoviesApi, private val apiKey: 
             if (response.isSuccessful && response.body() != null) {
                 Success(response.body()!!)
             } else {
-                Error("Something wrong occurred")
+                Error(unknownError)
             }
         } catch (e: Exception) {
-            Error(e.message ?: "Something wrong occurred")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -32,10 +40,10 @@ class MovieRemoteDataSource(private val service: MoviesApi, private val apiKey: 
             if (response.isSuccessful && response.body() != null) {
                 Success(response.body()!!)
             } else {
-                Error("Something wrong occurred")
+                Error(unknownError)
             }
         } catch (e: Exception) {
-            Error(e.message ?: "Something wrong occurred")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -45,10 +53,10 @@ class MovieRemoteDataSource(private val service: MoviesApi, private val apiKey: 
             if (response.isSuccessful && response.body() != null) {
                 Success(response.body()!!)
             } else {
-                Error("Something wrong occurred")
+                Error(unknownError)
             }
         } catch (e: Exception) {
-            Error(e.message ?: "Something wrong occurred")
+            Error(e.message ?: unknownError)
         }
     }
 
@@ -58,10 +66,10 @@ class MovieRemoteDataSource(private val service: MoviesApi, private val apiKey: 
             if (response.isSuccessful && response.body() != null) {
                 Success(response.body()!!)
             } else {
-                Error("Something wrong occurred")
+                Error(unknownError)
             }
         } catch (e: Exception) {
-            Error(e.message ?: "Something wrong occurred")
+            Error(e.message ?: unknownError)
         }
 
     }

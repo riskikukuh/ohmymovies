@@ -6,7 +6,7 @@ import com.ohmymovies.core.domain.model.*
 
 object DataMapper {
 
-    fun mapBelongsToCollectionResponseToBelongsToCollectionModel(data: BelongsToCollectionResponse?): BelongsToCollectionModel =
+    private fun mapBelongsToCollectionResponseToBelongsToCollectionModel(data: BelongsToCollectionResponse?): BelongsToCollectionModel =
         BelongsToCollectionModel(
             data?.id,
             data?.name,
@@ -73,7 +73,7 @@ object DataMapper {
             false
         )
 
-    fun mapProductionCompanyResponseToProductionCompanyModel(data: ProductionCompanyResponse): ProductionCompanyModel =
+    private fun mapProductionCompanyResponseToProductionCompanyModel(data: ProductionCompanyResponse): ProductionCompanyModel =
         ProductionCompanyModel(
             data.id,
             data.logoPath,
@@ -81,19 +81,19 @@ object DataMapper {
             data.originCountry
         )
 
-    fun mapProductionCountryResponseToProducionCountryModel(data: ProductionCountryResponse): ProductionCountryModel =
+    private fun mapProductionCountryResponseToProducionCountryModel(data: ProductionCountryResponse): ProductionCountryModel =
         ProductionCountryModel(
             data.iso_3166_1,
             data.name
         )
 
-    fun mapSpokenLanguageResponseToSpokenLanguageModel(data: SpokenLanguagesResponse): SpokenLanguagesModel =
+    private fun mapSpokenLanguageResponseToSpokenLanguageModel(data: SpokenLanguagesResponse): SpokenLanguagesModel =
         SpokenLanguagesModel(
             data.iso_639_1,
             data.name
         )
 
-    fun mapCreatedByResponseToCreatedByModel(data: CreatedByResponse): CreatedByModel =
+    private fun mapCreatedByResponseToCreatedByModel(data: CreatedByResponse): CreatedByModel =
         CreatedByModel(
             data.id,
             data.creditId,
@@ -102,12 +102,12 @@ object DataMapper {
             data.profilePath
         )
 
-    fun mapGenreResponseToGenreModel(data: GenreResponse): GenreModel = GenreModel(
+    private fun mapGenreResponseToGenreModel(data: GenreResponse): GenreModel = GenreModel(
         data.id,
         data.name
     )
 
-    fun mapEpisodeToAirResponseToEpisodeToAirModel(data: EpisodeToAirResponse?): EpisodeToAirModel =
+    private fun mapEpisodeToAirResponseToEpisodeToAirModel(data: EpisodeToAirResponse?): EpisodeToAirModel =
         EpisodeToAirModel(
             data?.airDate,
             data?.episodeNumber,
@@ -122,14 +122,15 @@ object DataMapper {
             data?.voteCount
         )
 
-    fun mapNetworkResponseToNetworkModel(data: NetworkResponse?): NetworkModel = NetworkModel(
-        data?.name,
-        data?.id,
-        data?.logoPath,
-        data?.originCountry
-    )
+    private fun mapNetworkResponseToNetworkModel(data: NetworkResponse?): NetworkModel =
+        NetworkModel(
+            data?.name,
+            data?.id,
+            data?.logoPath,
+            data?.originCountry
+        )
 
-    fun mapSeasonResponseToSeasonModel(data: SeasonResponse?): SeasonModel = SeasonModel(
+    private fun mapSeasonResponseToSeasonModel(data: SeasonResponse?): SeasonModel = SeasonModel(
         data?.airDate,
         data?.episodeCount,
         data?.id,
@@ -297,13 +298,13 @@ object DataMapper {
         name = data.name.toString()
     )
 
-    fun mapSpokenLanguageEntityToSpokenLanguageModel(data: SpokenLanguageEntity): SpokenLanguagesModel =
+    private fun mapSpokenLanguageEntityToSpokenLanguageModel(data: SpokenLanguageEntity): SpokenLanguagesModel =
         SpokenLanguagesModel(
             data.iso_639_1,
             data.name
         )
 
-    fun mapGenreEntityToGenreModel(data: GenreEntity): GenreModel = GenreModel(
+    private fun mapGenreEntityToGenreModel(data: GenreEntity): GenreModel = GenreModel(
         data.tvshowId, data.name
     )
 
