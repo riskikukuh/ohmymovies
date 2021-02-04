@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ohmymovies.data.EventObserver
-import com.dicoding.ohmymovies.data.model.DetailMovieActivityArgs
 import com.dicoding.ohmymovies.databinding.FragmentMoviesBinding
 import com.dicoding.ohmymovies.ui.detailMovie.DetailMovieActivity
+import com.ohmymovies.core.ui.args.DetailMovieActivityArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MoviesFragment : Fragment() {
@@ -34,7 +34,7 @@ class MoviesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMoviesBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = moviesViewModel
@@ -54,16 +54,16 @@ class MoviesFragment : Fragment() {
                 listAdapter.addMovies(it)
             }
 
-            refreshMoviesEvent.observe(viewLifecycleOwner, EventObserver{
+            refreshMoviesEvent.observe(viewLifecycleOwner, EventObserver {
                 binding.swipeRefreshLayout.isRefreshing = it
             })
 
-            emptyMessage.observe(viewLifecycleOwner){
+            emptyMessage.observe(viewLifecycleOwner) {
                 binding.empty.msg = it
             }
 
-            errorException.observe(viewLifecycleOwner){
-                binding.error.exception = it
+            errorMessage.observe(viewLifecycleOwner) {
+                binding.error.message = it
             }
         }
     }

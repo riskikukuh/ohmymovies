@@ -1,12 +1,12 @@
 package com.dicoding.ohmymovies.ui.detailTvshow
 
-import com.dicoding.ohmymovies.data.di.BaseViewModelProvider
+import com.ohmymovies.core.di.BaseViewModelProvider
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
 
-object DetailTvshowModule : BaseViewModelProvider{
+object DetailTvshowModule : BaseViewModelProvider {
     override fun loadModules() = lazyLoadModule
 
     private val lazyLoadModule by lazy {
@@ -14,7 +14,12 @@ object DetailTvshowModule : BaseViewModelProvider{
     }
 
     private val viewModelModule = module {
-        viewModel { DetailTvshowViewModel(application = androidApplication(), repository = get()) }
+        viewModel {
+            DetailTvshowViewModel(
+                application = androidApplication(),
+                tvshowUseCase = get()
+            )
+        }
     }
 
 }

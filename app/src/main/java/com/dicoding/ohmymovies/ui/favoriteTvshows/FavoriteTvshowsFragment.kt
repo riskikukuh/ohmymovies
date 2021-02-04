@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ohmymovies.R
-import com.dicoding.ohmymovies.data.Result
-import com.dicoding.ohmymovies.data.model.DetailTvshowActivityArgs
 import com.dicoding.ohmymovies.databinding.FragmentFavoriteTvshowsBinding
 import com.dicoding.ohmymovies.ui.detailTvshow.DetailTvshowActivity
+import com.ohmymovies.core.data.Result
+import com.ohmymovies.core.ui.args.DetailTvshowActivityArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteTvshowsFragment : Fragment() {
@@ -32,7 +32,7 @@ class FavoriteTvshowsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFavoriteTvshowsBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = tvshowsViewModel
@@ -71,7 +71,7 @@ class FavoriteTvshowsFragment : Fragment() {
                         with(binding) {
                             loading.visibility = View.GONE
                             error.root.visibility = View.VISIBLE
-                            error.exception = it.exception
+                            error.message = it.message
                             empty.root.visibility = View.GONE
                             listFavoriteTvshow.visibility = View.INVISIBLE
                         }

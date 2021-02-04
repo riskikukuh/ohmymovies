@@ -4,18 +4,19 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.dicoding.ohmymovies.R
 import com.dicoding.ohmymovies.data.Event
-import com.dicoding.ohmymovies.data.Result.Error
-import com.dicoding.ohmymovies.data.Result.Success
-import com.dicoding.ohmymovies.data.model.MovieModel
-import com.dicoding.ohmymovies.data.source.MovieRepository
 import com.dicoding.ohmymovies.util.EspressoIdlingResource
+import com.ohmymovies.core.data.Result.Error
+import com.ohmymovies.core.data.Result.Success
+import com.ohmymovies.core.domain.model.MovieModel
+import com.ohmymovies.core.domain.usecase.MovieUseCase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class MoviesViewModel(
     application: Application,
-    private val repository: MovieRepository,
+    private val moviesUseCase: MovieUseCase,
     private val dispatcher: CoroutineContext = Dispatchers.IO
 ) : AndroidViewModel(application) {
 
@@ -30,42 +31,44 @@ class MoviesViewModel(
     }
 
     private val _emptyMessage = MutableLiveData<String>()
-    val emptyMessage : LiveData<String> = _emptyMessage
+    val emptyMessage: LiveData<String> = _emptyMessage
 
     private val _loading = MutableLiveData<Boolean>().apply { value = false }
     val loading: LiveData<Boolean> = _loading
 
     private val _error = MutableLiveData<Boolean>().apply { value = false }
-    val error : LiveData<Boolean> = _error
+    val error: LiveData<Boolean> = _error
 
-    private val _errorException = MutableLiveData<Exception>()
-    val errorException : LiveData<Exception> = _errorException
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> = _errorMessage
 
     private val _refreshMoviesEvent = MutableLiveData<Event<Boolean>>()
-    val refreshMoviesEvent : LiveData<Event<Boolean>> = _refreshMoviesEvent
+    val refreshMoviesEvent: LiveData<Event<Boolean>> = _refreshMoviesEvent
 
     init {
         fetchMovies()
     }
 
-    fun fetchMovies(isFromSwipe : Boolean = false) {
+    fun fetchMovies(isFromSwipe: Boolean = false) {
         _error.value = false
         _moviesShow.value = false
         if (!isFromSwipe) _loading.value = true
         EspressoIdlingResource.increment()
         viewModelScope.launch(dispatcher) {
-            when(val response = repository.getMovies()){
-                is Success -> {
-                    val movieShow = response.data.isNotEmpty()
-                    _moviesShow.postValue(movieShow)
-                    _movies.postValue(response.data)
-                    if (!movieShow){
-                        _emptyMessage.postValue(getApplication<Application>().getString(R.string.movies_empty))
+            moviesUseCase.getMovies().collect {
+                when (it) {
+                    is Success -> {
+                        val movieShow = it.data.isNotEmpty()
+                        _moviesShow.postValue(movieShow)
+                        _movies.postValue(it.data)
+                        if (!movieShow) {
+                            _emptyMessage.postValue(getApplication<Application>().getString(R.string.movies_empty))
+                        }
                     }
-                }
-                is Error -> {
-                    _error.postValue(true)
-                    _errorException.postValue(response.exception)
+                    is Error -> {
+                        _error.postValue(true)
+                        _errorMessage.postValue(it.message)
+                    }
                 }
             }
             if (isFromSwipe) {
@@ -78,13 +81,16 @@ class MoviesViewModel(
     }
 
     fun checkFavoriteState(movieId: Int) {
-        var isFavorite = false
+        var isFavorite: Boolean
         viewModelScope.launch(dispatcher) {
-            isFavorite = when (val response = repository.getFavoriteMovie(movieId)) {
+            isFavorite = when (moviesUseCase.getFavoriteMovie(movieId)) {
                 is Success -> {
                     true
                 }
                 is Error -> {
+                    false
+                }
+                else -> {
                     false
                 }
             }

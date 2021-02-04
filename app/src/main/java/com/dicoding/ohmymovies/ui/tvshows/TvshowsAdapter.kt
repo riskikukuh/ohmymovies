@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.ohmymovies.R
-import com.dicoding.ohmymovies.data.model.TvShowModel
 import com.dicoding.ohmymovies.databinding.ItemTvshowBinding
-import com.dicoding.ohmymovies.util.Constants
-import com.dicoding.ohmymovies.util.DiffCallback
+import com.ohmymovies.core.domain.model.TvShowModel
+import com.ohmymovies.core.utils.Constants
+import com.ohmymovies.core.utils.DiffCallback
 
 class TvshowsAdapter(
     private val diffCallback: DiffCallback = DiffCallback(),

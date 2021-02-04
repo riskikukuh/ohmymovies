@@ -100,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
-                    android:text="@{viewModel.movieResponse.adult}"
+                    android:text="@{viewModel.movieResponse.adultAsString}"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toRightOf="@id/wrapperPoster"
                     app:layout_constraintTop_toBottomOf="@id/labelAdult" />

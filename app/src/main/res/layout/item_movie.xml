@@ -6,7 +6,7 @@
 
         <variable
             name="movie"
-            type="com.dicoding.ohmymovies.data.model.MovieModel" />
+            type="com.ohmymovies.core.domain.model.MovieModel" />
     </data>
 
     <androidx.cardview.widget.CardView

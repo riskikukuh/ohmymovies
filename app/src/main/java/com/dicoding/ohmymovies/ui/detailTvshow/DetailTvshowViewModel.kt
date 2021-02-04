@@ -7,21 +7,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.dicoding.ohmymovies.R
-import com.dicoding.ohmymovies.data.Result
-import com.dicoding.ohmymovies.data.model.DetailTvshowActivityArgs
-import com.dicoding.ohmymovies.data.model.TvShowModel
-import com.dicoding.ohmymovies.data.source.MovieRepository
 import com.dicoding.ohmymovies.util.EspressoIdlingResource
 import com.dicoding.ohmymovies.util.Util
+import com.ohmymovies.core.data.Result
+import com.ohmymovies.core.domain.model.TvShowModel
+import com.ohmymovies.core.domain.usecase.TvshowUseCase
+import com.ohmymovies.core.ui.args.DetailTvshowActivityArgs
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
 class DetailTvshowViewModel(
     application: Application,
+    private val tvshowUseCase: TvshowUseCase,
     private val dispatcher: CoroutineContext = Dispatchers.IO,
-    private val repository: MovieRepository,
 ) : AndroidViewModel(application) {
 
     private val _tvshowResponse = MutableLiveData<TvShowModel>()
@@ -34,22 +35,22 @@ class DetailTvshowViewModel(
     val loading: LiveData<Boolean> = _loading
 
     private val _error = MutableLiveData<Boolean>().apply { value = false }
-    val error : LiveData<Boolean> = _error
+    val error: LiveData<Boolean> = _error
 
-    private val _errorException = MutableLiveData<Exception>()
-    val errorException : LiveData<Exception> = _errorException
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> = _errorMessage
 
-    fun onNavArgs(context: Context, data: DetailTvshowActivityArgs?){
-        if (data?.id != null && data.id > 0) {
-            if (data.isOpenFromFavorite != null && data.isOpenFromFavorite) {
-                getTvshowFavorite(data.id)
+    fun onNavArgs(context: Context, data: DetailTvshowActivityArgs?) {
+        if (data?.id != null && data.id!! > 0) {
+            if (data.isOpenFromFavorite != null && data.isOpenFromFavorite!!) {
+                getTvshowFavorite(data.id!!)
             } else {
-                getTvshow(data.id)
+                getTvshow(data.id!!)
             }
         } else {
             _detailTvshowShow.value = false
             _error.value = true
-            _errorException.value = Exception(context.getString(R.string.tvshow_id_not_found))
+            _errorMessage.value = context.getString(R.string.tvshow_id_not_found)
         }
     }
 
@@ -59,14 +60,14 @@ class DetailTvshowViewModel(
         _detailTvshowShow.value = false
         EspressoIdlingResource.increment()
         viewModelScope.launch(dispatcher) {
-            when (val response = repository.getFavoriteTvshow(id)) {
+            when (val response = tvshowUseCase.getFavoriteTvshow(id)) {
                 is Result.Success -> {
                     _detailTvshowShow.postValue(true)
-                    _tvshowResponse.postValue(TvShowModel.fromTvshowEntityWithGenre(response.data))
+                    _tvshowResponse.postValue(response.data)
                 }
                 is Result.Error -> {
                     _error.postValue(true)
-                    _errorException.postValue(response.exception)
+                    _errorMessage.postValue(response.message)
                 }
             }
             _loading.postValue(false)
@@ -80,14 +81,19 @@ class DetailTvshowViewModel(
         _detailTvshowShow.value = false
         EspressoIdlingResource.increment()
         viewModelScope.launch(dispatcher) {
-            when (val response = repository.getTvshow(id)) {
-                is Result.Success -> {
-                    _detailTvshowShow.postValue(true)
-                    _tvshowResponse.postValue(response.data)
-                }
-                is Result.Error -> {
-                    _error.postValue(true)
-                    _errorException.postValue(response.exception)
+            tvshowUseCase.getTvshow(id).collect {
+                when (it) {
+                    is Result.Success -> {
+                        _detailTvshowShow.postValue(true)
+                        _tvshowResponse.postValue(it.data)
+                    }
+                    is Result.Error -> {
+                        _error.postValue(true)
+                        _errorMessage.postValue(it.message)
+                    }
+                    is Result.Loading -> {
+                        _loading.postValue(it.state)
+                    }
                 }
             }
             _loading.postValue(false)
@@ -98,7 +104,7 @@ class DetailTvshowViewModel(
     fun addToFavorite(onSuccess: suspend () -> Unit) {
         tvshowResponse.value?.let {
             viewModelScope.launch(dispatcher) {
-                when (val response = repository.addTvshowToFavorite(it)) {
+                when (val response = tvshowUseCase.addFavoriteTvshow(it)) {
                     is Result.Success -> {
                         withContext(Dispatchers.Main) {
                             onSuccess.invoke()
@@ -107,7 +113,7 @@ class DetailTvshowViewModel(
                     is Result.Error -> {
                         Util.showToast(
                             getApplication(),
-                            response.exception.message ?: "Unknown error occured"
+                            response.message
                         )
                     }
                 }
@@ -118,7 +124,7 @@ class DetailTvshowViewModel(
     fun removeFromFavorite(onSuccess: suspend () -> Unit) {
         tvshowResponse.value?.let {
             viewModelScope.launch(dispatcher) {
-                when (val response = repository.removeTvshowFromFavorite(it.id ?: 0)) {
+                when (val response = tvshowUseCase.removeFavoriteTvshow(it.id ?: 0)) {
                     is Result.Success -> {
                         withContext(Dispatchers.Main) {
                             onSuccess.invoke()
@@ -128,7 +134,7 @@ class DetailTvshowViewModel(
                         withContext(Dispatchers.Main) {
                             Util.showToast(
                                 getApplication(),
-                                response.exception.message ?: "Unknown error occurred"
+                                response.message
                             )
                         }
                     }

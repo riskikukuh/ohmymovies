@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ohmymovies.data.EventObserver
-import com.dicoding.ohmymovies.data.model.DetailTvshowActivityArgs
 import com.dicoding.ohmymovies.databinding.FragmentTvshowsBinding
 import com.dicoding.ohmymovies.ui.detailTvshow.DetailTvshowActivity
+import com.ohmymovies.core.ui.args.DetailTvshowActivityArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TvshowsFragment : Fragment() {
@@ -32,7 +32,7 @@ class TvshowsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentTvshowsBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = tvshowsViewModel
@@ -52,16 +52,16 @@ class TvshowsFragment : Fragment() {
                 listAdapter.addTvshows(it)
             }
 
-            refreshTvshowsEvent.observe(viewLifecycleOwner, EventObserver{
+            refreshTvshowsEvent.observe(viewLifecycleOwner, EventObserver {
                 binding.swipeRefreshLayout.isRefreshing = false
             })
 
-            emptyMessage.observe(viewLifecycleOwner){
+            emptyMessage.observe(viewLifecycleOwner) {
                 binding.empty.msg = it
             }
 
-            errorException.observe(viewLifecycleOwner){
-                binding.error.exception = it
+            errorMessage.observe(viewLifecycleOwner) {
+                binding.error.message = it
             }
         }
     }

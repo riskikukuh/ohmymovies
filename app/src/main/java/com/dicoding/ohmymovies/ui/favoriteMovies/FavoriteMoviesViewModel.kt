@@ -3,13 +3,13 @@ package com.dicoding.ohmymovies.ui.favoriteMovies
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
-import com.dicoding.ohmymovies.data.Result
-import com.dicoding.ohmymovies.data.model.entity.MovieEntity
-import com.dicoding.ohmymovies.data.source.MovieRepository
+import com.ohmymovies.core.data.Result
+import com.ohmymovies.core.data.source.local.entity.MovieEntity
+import com.ohmymovies.core.domain.usecase.MovieUseCase
 
 class FavoriteMoviesViewModel(
-    private val repository: MovieRepository
+    private val movieUseCase: MovieUseCase
 ) : ViewModel() {
     fun fetchFavoriteMovies(): LiveData<Result<PagedList<MovieEntity>>> =
-        repository.getFavoriteMovies()
+        movieUseCase.getFavoriteMovies()
 }

@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.dicoding.ohmymovies.R
-import com.dicoding.ohmymovies.data.model.DetailMovieActivityArgs
 import com.dicoding.ohmymovies.databinding.ActivityDetailMovieBinding
 import com.dicoding.ohmymovies.ui.adapter.GenresAdapter
-import com.dicoding.ohmymovies.util.Constants
 import com.dicoding.ohmymovies.util.setupToolbar
+import com.ohmymovies.core.ui.args.DetailMovieActivityArgs
+import com.ohmymovies.core.utils.Constants
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailMovieActivity : AppCompatActivity() {
@@ -51,8 +51,8 @@ class DetailMovieActivity : AppCompatActivity() {
                 genresAdapter.addGenres(it.genres ?: emptyList())
             }
 
-            errorException.observe(this@DetailMovieActivity) {
-                binding.error.exception = it
+            errorMessage.observe(this@DetailMovieActivity) {
+                binding.error.message = it
             }
         }
     }

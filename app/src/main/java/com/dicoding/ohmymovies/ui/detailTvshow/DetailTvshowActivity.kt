@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.dicoding.ohmymovies.R
-import com.dicoding.ohmymovies.data.model.DetailTvshowActivityArgs
 import com.dicoding.ohmymovies.databinding.ActivityDetailTvshowBinding
 import com.dicoding.ohmymovies.ui.adapter.GenresAdapter
-import com.dicoding.ohmymovies.util.Constants
 import com.dicoding.ohmymovies.util.setupToolbar
+import com.ohmymovies.core.ui.args.DetailTvshowActivityArgs
+import com.ohmymovies.core.utils.Constants
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -51,8 +51,8 @@ class DetailTvshowActivity : AppCompatActivity() {
                 genresAdapter.addGenres(it.genres ?: emptyList())
             }
 
-            errorException.observe(this@DetailTvshowActivity) {
-                binding.error.exception = it
+            errorMessage.observe(this@DetailTvshowActivity) {
+                binding.error.message = it
             }
         }
     }

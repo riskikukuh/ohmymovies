@@ -1,6 +1,6 @@
 package com.dicoding.ohmymovies.ui.movies
 
-import com.dicoding.ohmymovies.data.di.BaseViewModelProvider
+import com.ohmymovies.core.di.BaseViewModelProvider
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules

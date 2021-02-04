@@ -4,8 +4,8 @@
     <data>
 
         <variable
-            name="exception"
-            type="Exception" />
+            name="message"
+            type="String" />
     </data>
 
     <LinearLayout
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
-            android:text="@{exception.message}"
+            android:text="@{message}"
             android:textAlignment="center" />
 
     </LinearLayout>

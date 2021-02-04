@@ -4,16 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.ohmymovies.data.model.Genre
 import com.dicoding.ohmymovies.databinding.ItemGenreBinding
-import com.dicoding.ohmymovies.util.DiffCallback
+import com.ohmymovies.core.domain.model.GenreModel
+import com.ohmymovies.core.utils.DiffCallback
 
-class GenresAdapter(private val genres: MutableList<Genre> = mutableListOf(), private val diffCallback: DiffCallback = DiffCallback()) : RecyclerView.Adapter<GenresAdapter.ViewHolder>(){
+class GenresAdapter(
+    private val genres: MutableList<GenreModel> = mutableListOf(),
+    private val diffCallback: DiffCallback = DiffCallback()
+) : RecyclerView.Adapter<GenresAdapter.ViewHolder>() {
 
-    fun addGenres(data :  List<Genre>){
+    fun addGenres(data: List<GenreModel>) {
         diffCallback.setList(genres, data)
         val result = DiffUtil.calculateDiff(diffCallback)
-        with(genres){
+        with(genres) {
             clear()
             addAll(data)
         }
@@ -31,7 +34,7 @@ class GenresAdapter(private val genres: MutableList<Genre> = mutableListOf(), pr
     override fun getItemCount(): Int = genres.size
 
     class ViewHolder private constructor(private val binding : ItemGenreBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(data : Genre){
+        fun bind(data: GenreModel) {
             binding.genre = data.name
         }
 

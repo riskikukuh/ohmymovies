@@ -1,0 +1,35 @@
+package com.ohmymovies.core.data.source.remote.response
+
+import com.google.gson.annotations.SerializedName
+
+data class TvShowResponse(
+    @SerializedName("backdrop_path") val backdropPath: String? = "",
+    @SerializedName("created_by") val createdBy: List<CreatedByResponse>? = emptyList(),
+    @SerializedName("episode_run_time") val episodeRunTime: List<Int> = emptyList(),
+    @SerializedName("first_air_date") val firstAirDate: String? = "",
+    @SerializedName("genres") val genres: List<GenreResponse>? = emptyList(),
+    @SerializedName("homepage") var homepage: String? = "",
+    @SerializedName("id") val id: Int? = 0,
+    @SerializedName("in_production") val inProduction: Boolean? = false,
+    @SerializedName("languages") val languages: List<String>? = emptyList(),
+    @SerializedName("last_air_date") val lastAirDate: String? = "",
+    @SerializedName("last_episode_to_air") val lastEpisodeToAir: EpisodeToAirResponse?,
+    @SerializedName("name") val name: String? = "",
+    @SerializedName("next_episode_to_air") val nextEpisodeToAir: EpisodeToAirResponse?,
+    @SerializedName("networks") val networks: List<NetworkResponse>? = emptyList(),
+    @SerializedName("number_of_episodes") val numberOfEpisodes: Int? = 0,
+    @SerializedName("number_of_seasons") val numberOfSeasons: Int? = 0,
+    @SerializedName("origin_country") val originCountry: List<String>? = emptyList(),
+    @SerializedName("original_language") val originalLanguage: String? = "",
+    @SerializedName("original_name") val originalName: String? = "",
+    @SerializedName("overview") val overview: String? = "",
+    @SerializedName("popularity") val popularity: Double? = 0.0,
+    @SerializedName("poster_path") val posterPath: String? = "",
+    @SerializedName("production_companies") val productionCompanies: List<ProductionCompanyResponse>? = emptyList(),
+    @SerializedName("seasons") val seasons: List<SeasonResponse>? = emptyList(),
+    @SerializedName("status") val status: String? = "",
+    @SerializedName("tagline") val tagline: String? = "",
+    @SerializedName("type") val type: String? = "",
+    @SerializedName("vote_average") val voteAverage: Double? = 0.0,
+    @SerializedName("vote_count") val voteCount: Int? = 0,
+)

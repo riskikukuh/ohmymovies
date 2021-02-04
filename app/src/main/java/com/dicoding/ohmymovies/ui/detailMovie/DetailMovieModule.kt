@@ -1,12 +1,12 @@
 package com.dicoding.ohmymovies.ui.detailMovie
 
-import com.dicoding.ohmymovies.data.di.BaseViewModelProvider
+import com.ohmymovies.core.di.BaseViewModelProvider
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
 
-object DetailMovieModule :BaseViewModelProvider {
+object DetailMovieModule : BaseViewModelProvider {
     override fun loadModules() = lazyLoadModule
 
     private val lazyLoadModule by lazy {
@@ -14,7 +14,7 @@ object DetailMovieModule :BaseViewModelProvider {
     }
 
     private val viewModelModule = module {
-        viewModel { DetailMovieViewModel(application = androidApplication(), repository = get()) }
+        viewModel { DetailMovieViewModel(application = androidApplication(), movieUseCase = get()) }
     }
 
 }

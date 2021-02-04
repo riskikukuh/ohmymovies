@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.ohmymovies.R
-import com.dicoding.ohmymovies.data.model.MovieModel
-import com.dicoding.ohmymovies.data.model.entity.MovieEntity
 import com.dicoding.ohmymovies.databinding.ItemMovieBinding
-import com.dicoding.ohmymovies.util.Constants
+import com.ohmymovies.core.data.source.local.entity.MovieEntity
+import com.ohmymovies.core.utils.Constants
+import com.ohmymovies.core.utils.DataMapper
 
 class FavoriteMoviesAdapter internal constructor(
     private val onClickCallback: (MovieEntity) -> Unit
@@ -36,7 +36,7 @@ class FavoriteMoviesAdapter internal constructor(
             Log.d("AdapterKuy", "movie: $data")
             Glide.with(binding.root.context).load(Constants.BASE_URL_POSTER + data.posterPath)
                 .into(binding.imagePoster)
-            binding.movie = MovieModel.fromMovieEntity(data)
+            binding.movie = DataMapper.mapMovieEntityToMovieModel(data)
             binding.isMovieFavorite.setImageResource(R.drawable.ic_favorite_24)
             binding.itemMovie.setOnClickListener {
                 onClickCallback.invoke(data)

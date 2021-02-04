@@ -5,7 +5,7 @@
     <data>
         <variable
             name="tvshow"
-            type="com.dicoding.ohmymovies.data.model.TvShowModel" />
+            type="com.ohmymovies.core.domain.model.TvShowModel" />
     </data>
 
     <androidx.cardview.widget.CardView

@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.ohmymovies.R
-import com.dicoding.ohmymovies.data.Result
-import com.dicoding.ohmymovies.data.model.DetailMovieActivityArgs
 import com.dicoding.ohmymovies.databinding.FragmentFavoriteMoviesBinding
 import com.dicoding.ohmymovies.ui.detailMovie.DetailMovieActivity
+import com.ohmymovies.core.data.Result
+import com.ohmymovies.core.ui.args.DetailMovieActivityArgs
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteMoviesFragment : Fragment() {
@@ -32,7 +32,7 @@ class FavoriteMoviesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFavoriteMoviesBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = moviesViewModel
@@ -73,7 +73,7 @@ class FavoriteMoviesFragment : Fragment() {
                             error.root.visibility = View.VISIBLE
                             listFavoriteMovie.visibility = View.INVISIBLE
                             empty.root.visibility = View.GONE
-                            error.exception = it.exception
+                            error.message = it.message
                         }
                     }
                 }

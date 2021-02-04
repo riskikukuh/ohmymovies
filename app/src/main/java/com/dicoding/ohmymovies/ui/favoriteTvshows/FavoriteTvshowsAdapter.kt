@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.ohmymovies.R
-import com.dicoding.ohmymovies.data.model.TvShowModel
-import com.dicoding.ohmymovies.data.model.entity.TvshowEntity
 import com.dicoding.ohmymovies.databinding.ItemTvshowBinding
-import com.dicoding.ohmymovies.util.Constants
+import com.ohmymovies.core.data.source.local.entity.TvshowEntity
+import com.ohmymovies.core.utils.Constants
+import com.ohmymovies.core.utils.DataMapper
 
 class FavoriteTvshowsAdapter internal constructor(
     private val onClickCallback: (TvshowEntity) -> Unit
@@ -34,7 +34,7 @@ class FavoriteTvshowsAdapter internal constructor(
         fun bind(data: TvshowEntity, onClickCallback: (TvshowEntity) -> Unit) {
             Glide.with(binding.root.context).load(Constants.BASE_URL_POSTER + data.posterPath)
                 .into(binding.imagePoster)
-            binding.tvshow = TvShowModel.fromTvshowEntity(data)
+            binding.tvshow = DataMapper.mapTvshowEntityToTvShowModel(data)
             binding.isTvshowFavorite.setImageResource(R.drawable.ic_favorite_24)
             binding.itemTvshow.setOnClickListener {
                 onClickCallback.invoke(data)

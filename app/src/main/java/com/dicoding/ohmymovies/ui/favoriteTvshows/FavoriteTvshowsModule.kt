@@ -1,6 +1,6 @@
 package com.dicoding.ohmymovies.ui.favoriteTvshows
 
-import com.dicoding.ohmymovies.data.di.BaseViewModelProvider
+import com.ohmymovies.core.di.BaseViewModelProvider
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
