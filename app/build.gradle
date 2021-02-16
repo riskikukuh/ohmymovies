@@ -7,13 +7,13 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 apply from: '../shared_dependencies.gradle'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.dicoding.ohmymovies"
         minSdkVersion 23
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -54,7 +54,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     // Testing
-    testImplementation 'junit:junit:4.13'
+    testImplementation "junit:junit:$junit_version"
     testImplementation "org.mockito:mockito-core:$mockito_version"
 
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineTestVersion"
@@ -65,19 +65,21 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:2.1.0"
 
     // Espresso
-    def androidx_test_espresso = "3.1.0"
+    def androidx_test_espresso = "3.3.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidx_test_espresso"
-    implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
+    implementation "androidx.test.espresso:espresso-idling-resource:$androidx_test_espresso"
 
     // androidx.test
     def androidx_test = "1.1.0"
+    def androidx_test_junit = "1.1.2"
+    def androidx_test_core = "1.3.0"
     androidTestImplementation "androidx.test:runner:$androidx_test"
-    androidTestImplementation "androidx.test:core:$androidx_test"
-    androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test"
+    androidTestImplementation "androidx.test:core:$androidx_test_core"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test_junit"
 
     // androidx.fragment
-    def fragment_version = "1.2.0" // must use for new factory stuff
+    def fragment_version = "1.3.0" // must use for new factory stuff
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
     implementation "androidx.fragment:fragment:$fragment_version"
 
@@ -85,6 +87,8 @@ dependencies {
 
     testImplementation "androidx.room:room-testing:$room_version"
 
+    // debugImplementation because LeakCanary should only run in debug builds.
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary_version"
 
-    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation "androidx.test:rules:1.3.0"
 }
