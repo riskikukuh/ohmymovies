@@ -38,6 +38,6 @@ data class TvShowModel(
 ) : Parcelable {
     fun episodeCountAsString() = numberOfEpisodes.toString()
     fun getRating() = voteAverage.toString()
-    fun getLanguagesAsString() = languages?.joinToString()
-    fun getInProductionAsString() = if (inProduction != null && inProduction) "Yes" else "No"
+    fun getLanguagesAsString() = this.languages?.joinToString() ?: "Unknown"
+    fun getInProductionAsString() = if (this.inProduction != null && this.inProduction) "Yes" else "No"
 }

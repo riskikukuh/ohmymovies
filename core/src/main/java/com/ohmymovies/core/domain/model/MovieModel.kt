@@ -37,5 +37,5 @@ data class MovieModel(
             ?.joinToString("")
 
     fun getRating() = voteAverage.toString()
-    fun getAdultAsString() = if (adult != null && adult) "Yes" else "No"
+    fun getAdultAsString() = if (this.adult != null && this.adult) "Yes" else "No"
 }
