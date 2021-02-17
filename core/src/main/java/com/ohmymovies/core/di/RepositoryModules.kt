@@ -8,6 +8,8 @@ import com.ohmymovies.core.data.source.remote.MovieRemoteDataSource
 import com.ohmymovies.core.domain.repository.IMoviesRepository
 import com.ohmymovies.core.utils.Constants
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -37,11 +39,15 @@ object RepositoryModules : BaseModule {
 
     private val db = module {
         single {
+            val passphrase : ByteArray = SQLiteDatabase.getBytes("myOwnPassphraseCipherDatabase".toCharArray())
+            val factory = SupportFactory(passphrase)
             Room.databaseBuilder(
                 androidContext().applicationContext,
                 FavoritesDatabase::class.java,
                 "favoritesDatabase"
-            ).fallbackToDestructiveMigration().build()
+            ).fallbackToDestructiveMigration()
+                .openHelperFactory(factory)
+                .build()
         }
         factory { get<FavoritesDatabase>().favoritesDao() }
     }

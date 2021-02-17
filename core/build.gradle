@@ -49,17 +49,31 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
+    implementation "net.zetetic:android-database-sqlcipher:$sqlcipher_version"
+    implementation "androidx.sqlite:sqlite-ktx:$sqlite_version"
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
     // Json Parser
     api "com.google.code.gson:gson:$gson_version"
 
     // Service Locator
+    //noinspection GradleDependency
     api "org.koin:koin-android:$koin_version"
+    //noinspection GradleDependency
     api "org.koin:koin-androidx-viewmodel:$koin_version"
+    //noinspection GradleDependency
     api "org.koin:koin-androidx-fragment:$koin_version"
 
     // Lifecycle
+    //noinspection GradleDependency
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    //noinspection GradleDependency
     api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    //noinspection GradleDependency
     api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 }
