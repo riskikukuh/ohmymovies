@@ -43,7 +43,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun openFavoritePage() {
         val intent =
-            Intent(this, Class.forName("com.ohmymovies.favorites.favorite.FavoriteActivity"))
+            Intent("com.ohmymovies.favorites.favorite.FavoriteActivity")
         startActivity(intent)
     }
 

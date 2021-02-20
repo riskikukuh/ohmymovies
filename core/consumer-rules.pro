@@ -100,3 +100,5 @@
 -keep,includedescriptorclasses class net.sqlcipher.* { *; }
 -keep,includedescriptorclasses class net.sqlcipher.database.* { *; }
 -keep,includedescriptorclasses interface net.sqlcipher.* { *; }
+
+-keep, allowobfuscation class com.ohmymovies.core.di.DepsModuleProvider
