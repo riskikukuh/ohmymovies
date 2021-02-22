@@ -17,7 +17,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class DetailMovieActivity : AppCompatActivity() {
 
     companion object {
-        val TAG = DetailMovieActivity::class.java.simpleName
         const val ARGS = "DetailMovieActivityArgs"
     }
 

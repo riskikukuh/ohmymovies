@@ -20,35 +20,4 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-# ------------------- Glide ---------------------- $
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep class * extends com.bumptech.glide.module.AppGlideModule {
- <init>(...);
-}
--keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
-}
--keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
-  *** rewind();
-}
-
-# --------------- Lifecycle Viewmodel ------------- #
--keep class * extends androidx.lifecycle.ViewModel {
-   <init>();
-}
--keep class * extends androidx.lifecycle.AndroidViewModel {
-   <init>(android.app.Application);
-}
-
-# ----------------- KOIN ------------------- #
--keepclassmembers class * { public <init>(...); }
-
-# -------------------- coroutines ------------------- #
--keep class kotlinx.coroutines.android.AndroidExceptionPreHandler
--keep class kotlinx.coroutines.android.AndroidDispatcherFactory
-
-# -------------------- SQL Cipher ------------ #
--keep,includedescriptorclasses class net.sqlcipher.* { *; }
--keep,includedescriptorclasses class net.sqlcipher.database.* { *; }
--keep,includedescriptorclasses interface net.sqlcipher.* { *; }
+-keepnames class com.ohmymovies.favorites.favorite.*

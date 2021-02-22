@@ -16,8 +16,6 @@ import com.ohmymovies.favorites.databinding.FragmentFavoriteTvshowsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteTvshowsFragment : Fragment() {
-    private val TAG = FavoriteTvshowsFragment::class.java.simpleName
-
     private lateinit var binding: FragmentFavoriteTvshowsBinding
 
     private val tvshowsViewModel: FavoriteTvshowsViewModel by viewModel()
@@ -77,6 +75,7 @@ class FavoriteTvshowsFragment : Fragment() {
                             listFavoriteTvshow.visibility = View.INVISIBLE
                         }
                     }
+                    else -> {}
                 }
             }
         }

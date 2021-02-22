@@ -30,10 +30,6 @@ android {
     }
 
     buildTypes {
-        debug {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -87,6 +83,7 @@ dependencies {
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
     implementation "androidx.fragment:fragment:$fragment_version"
 
+    //noinspection GradleDependency
     testImplementation "org.koin:koin-test:$koin_version"
 
     testImplementation "androidx.room:room-testing:$room_version"

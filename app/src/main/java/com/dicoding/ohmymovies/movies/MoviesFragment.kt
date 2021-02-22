@@ -15,8 +15,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MoviesFragment : Fragment() {
 
-    private val TAG = MoviesFragment::class.java.simpleName
-
     private lateinit var binding: FragmentMoviesBinding
 
     private val moviesViewModel: MoviesViewModel by viewModel()

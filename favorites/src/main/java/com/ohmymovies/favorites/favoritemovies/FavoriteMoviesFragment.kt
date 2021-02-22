@@ -16,8 +16,6 @@ import com.ohmymovies.favorites.databinding.FragmentFavoriteMoviesBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteMoviesFragment : Fragment() {
-    private val TAG = FavoriteMoviesFragment::class.java.simpleName
-
     private lateinit var binding: FragmentFavoriteMoviesBinding
 
     private val moviesViewModel: FavoriteMoviesViewModel by viewModel()

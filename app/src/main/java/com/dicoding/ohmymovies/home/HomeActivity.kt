@@ -1,6 +1,7 @@
 package com.dicoding.ohmymovies.home
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -42,9 +43,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun openFavoritePage() {
-        val intent =
-            Intent("com.ohmymovies.favorites.favorite.FavoriteActivity")
-        startActivity(intent)
+        val uri = Uri.parse("ohmymovies://favorites")
+        startActivity(Intent(Intent.ACTION_VIEW, uri))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

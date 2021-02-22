@@ -49,6 +49,8 @@
 -if interface * { @retrofit2.http.* <methods>; }
 -keep,allowobfuscation interface <1>
 
+-dontwarn kotlinx.**
+
 # -------------------- OKHTTP3 ------------------ #
 # JSR 305 annotations are for embedding nullability information.
 -dontwarn javax.annotation.**
@@ -72,10 +74,10 @@
 
 # Gson specific classes
 -dontwarn sun.misc.**
-#-keep class com.google.gson.stream.** { *; }
+-keep class com.google.gson.stream.* { *; }
 
 # Application classes that will be serialized/deserialized over Gson
--keep class com.ohmymovies.core.domain.model.* { <fields>; }
+-keep class com.google.gson.examples.android.model.* { <fields>; }
 
 # Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
 # JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
@@ -89,9 +91,6 @@
     @com.google.gson.annotations.SerializedName <fields>;
 }
 
-# ----------------- KOIN ------------------- #
-#-keepclassmembers class * { public <init>(...); }
-
 # -------------------- coroutines ------------------- #
 -keep class kotlinx.coroutines.android.AndroidExceptionPreHandler
 -keep class kotlinx.coroutines.android.AndroidDispatcherFactory
@@ -100,5 +99,3 @@
 -keep,includedescriptorclasses class net.sqlcipher.* { *; }
 -keep,includedescriptorclasses class net.sqlcipher.database.* { *; }
 -keep,includedescriptorclasses interface net.sqlcipher.* { *; }
-
--keep, allowobfuscation class com.ohmymovies.core.di.DepsModuleProvider

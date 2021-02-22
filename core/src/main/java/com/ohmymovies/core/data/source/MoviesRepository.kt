@@ -29,11 +29,6 @@ class MoviesRepository(
     private val dispatcher: CoroutineContext = Dispatchers.IO
 ) : IMoviesRepository {
 
-    private val errorMovieId = context.getString(R.string.movie_id_not_found)
-    private val errorMovieEmpty = context.getString(R.string.movies_empty)
-    private val errorTvshowId = context.getString(R.string.tvshow_id_not_found)
-    private val errorTvshowEmpty = context.getString(R.string.tvshows_empty)
-
     private val unknownError = context.getString(R.string.unknown_error)
 
     private val favoriteMovies = MediatorLiveData<Result<PagedList<MovieEntity>>>()

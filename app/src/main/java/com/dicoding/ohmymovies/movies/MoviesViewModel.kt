@@ -58,9 +58,10 @@ class MoviesViewModel(
             moviesUseCase.getMovies().collect {
                 when (it) {
                     is Success -> {
-                        val movieShow = it.data.isNotEmpty()
+                        val list = it.data
+                        val movieShow = list.isNotEmpty()
                         _moviesShow.postValue(movieShow)
-                        _movies.postValue(it.data)
+                        _movies.postValue(list)
                         if (!movieShow) {
                             _emptyMessage.postValue(getApplication<Application>().getString(R.string.movies_empty))
                         }
@@ -69,6 +70,7 @@ class MoviesViewModel(
                         _error.postValue(true)
                         _errorMessage.postValue(it.message)
                     }
+                    else -> {}
                 }
             }
             if (isFromSwipe) {

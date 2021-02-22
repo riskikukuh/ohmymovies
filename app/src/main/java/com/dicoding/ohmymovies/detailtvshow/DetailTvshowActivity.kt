@@ -17,7 +17,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class DetailTvshowActivity : AppCompatActivity() {
 
     companion object {
-        val TAG = DetailTvshowActivity::class.java.simpleName
         const val ARGS = "DetailTvshowActivityArgs"
     }
 

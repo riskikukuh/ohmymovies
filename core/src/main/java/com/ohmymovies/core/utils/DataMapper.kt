@@ -230,36 +230,6 @@ object DataMapper {
         data.voteCount
     )
 
-    fun mapMovieEntityWithGenreLanguageToMovieModel(data: MovieWithGenreLanguage): MovieModel =
-        MovieModel(
-            data.movie.adult,
-            data.movie.backdropPath,
-            null,
-            data.movie.budget,
-            data.genres.map { mapGenreEntityToGenreModel(it) },
-            data.movie.homepage,
-            data.movie.id,
-            data.movie.imdbId,
-            data.movie.originalLanguage,
-            data.movie.originalTitle,
-            data.movie.overview,
-            data.movie.popularity,
-            data.movie.posterPath,
-            emptyList(),
-            emptyList(),
-            data.movie.releaseDate,
-            data.movie.revenue,
-            data.movie.runtime,
-            data.spokenLanguage.map { mapSpokenLanguageEntityToSpokenLanguageModel(it) },
-            data.movie.status,
-            data.movie.tagline,
-            data.movie.title,
-            data.movie.video,
-            data.movie.voteAverage,
-            data.movie.voteCount,
-            data.movie.isFavorite
-        )
-
     fun mapMovieEntityToMovieModel(data: MovieEntity): MovieModel = MovieModel(
         data.adult,
         data.backdropPath,
@@ -343,40 +313,6 @@ object DataMapper {
         data.voteAverage,
         data.voteCount
     )
-
-    fun mapTvshowEntityWithGenreLanguageToTvShowModel(data: TvshowWithGenreLanguage): TvShowModel =
-        TvShowModel(
-            data.tvshow.backdropPath,
-            emptyList(),
-            emptyList(),
-            data.tvshow.firstAirDate,
-            data.genres.map { mapGenreEntityToGenreModel(it) },
-            data.tvshow.homepage,
-            data.tvshow.id,
-            data.tvshow.inProduction,
-            data.languages.map { it.name },
-            data.tvshow.lastAirDate,
-            null,
-            data.tvshow.name,
-            null,
-            emptyList(),
-            data.tvshow.numberOfEpisodes,
-            data.tvshow.numberOfSeasons,
-            emptyList(),
-            data.tvshow.originalLanguage,
-            data.tvshow.originalName,
-            data.tvshow.overview,
-            data.tvshow.popularity,
-            data.tvshow.posterPath,
-            emptyList(),
-            emptyList(),
-            data.tvshow.status,
-            data.tvshow.tagline,
-            data.tvshow.type,
-            data.tvshow.voteAverage,
-            data.tvshow.voteCount,
-            data.tvshow.isFavorite
-        )
 
     fun mapTvshowEntityToTvShowModel(data: TvshowEntity): TvShowModel = TvShowModel(
         data.backdropPath,
